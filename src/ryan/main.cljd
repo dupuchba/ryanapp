@@ -20,14 +20,14 @@
 (def black m.Colors/black54)
 
 (def initial-todos
-  [{:text "Do Nothing" :dueDate (.now DateTime) :priority 3 :is-done false}
-   {:text "Get back to 1985" :dueDate (-> DateTime (.now) (.add (Duration :hours 5))) :priority 5 :is-done false}
-   {:text "Buy a parrot and teach him to say ?help! I?ve been turned into a parrot!" :dueDate (-> DateTime (.now) (.add (Duration :days 1))) :priority 4 :is-done false}
-   {:text "Order Diet water whenever I go out to eat" :dueDate (-> DateTime (.now) (.add (Duration :days 2))) :priority 4 :is-done false}
-   {:text "Buy a turtle. Name it ?The Speed of Light.? Tell everyone that I can run faster than The Speed of Light." :dueDate (-> DateTime (.now) (.add (Duration :days 3))) :priority 4 :is-done false}
-   {:text "Hire two private investigators. Get them to follow each other." :dueDate (-> DateTime (.now) (.add (Duration :days 4))) :priority 3 :is-done false}
-   {:text "World Peace" :dueDate (-> DateTime (.now) (.add (Duration :days 5))) :priority 2 :is-done false}
-   {:text "Become a teacher. Make a test where every answer is ?C?." :dueDate (-> DateTime (.now) (.add (Duration :days 6))) :priority 1 :is-done false}])
+  [{:id 0 :text "Do Nothing" :dueDate (.now DateTime) :priority 3 :is-done false}
+   {:id 1 :text "Get back to 1985" :dueDate (-> DateTime (.now) (.add (Duration :hours 5))) :priority 5 :is-done false}
+   {:id 2 :text "Buy a parrot and teach him to say ?help! I?ve been turned into a parrot!" :dueDate (-> DateTime (.now) (.add (Duration :days 1))) :priority 4 :is-done false}
+   {:id 3 :text "Order Diet water whenever I go out to eat" :dueDate (-> DateTime (.now) (.add (Duration :days 2))) :priority 4 :is-done false}
+   {:id 4 :text "Buy a turtle. Name it ?The Speed of Light.? Tell everyone that I can run faster than The Speed of Light." :dueDate (-> DateTime (.now) (.add (Duration :days 3))) :priority 4 :is-done false}
+   {:id 5 :text "Hire two private investigators. Get them to follow each other." :dueDate (-> DateTime (.now) (.add (Duration :days 4))) :priority 3 :is-done false}
+   {:id 6 :text "World Peace" :dueDate (-> DateTime (.now) (.add (Duration :days 5))) :priority 2 :is-done false}
+   {:id 7 :text "Become a teacher. Make a test where every answer is ?C?." :dueDate (-> DateTime (.now) (.add (Duration :days 6))) :priority 1 :is-done false}])
 
 (defn ^a/Future fetch-todos []
   (a.Future/delayed (Duration :seconds 4)
@@ -63,42 +63,51 @@
               :icon (m/Icon (.article m/Icons))
               :label "News")]))
 
-(defn todo-item [idx]
+(defn todo-item [idx todo-id]
   (f/widget
-    :inherit [:app-state m/Theme]
-    (let [todo @(get-in app-state [:todos idx])
-          priority (:priority todo)
-          text-theme (-> theme .-textTheme)
-          color-scheme (-> theme .-colorScheme)
-          item-color (-> color-scheme .primary (.withOpacity (* 0.05 priority)))
-          priority-icon-color (-> color-scheme .secondaryVariant (.withOpacity (* 0.2 priority)))
-          is-deleted false]
+    :key todo-id
+    :inherit [m/Theme :app-state]
+    (let [is-deleted false]
       (if is-deleted
         m.SizedBox/shrink
-        (m/Column
-          :children
-          [(f/widget
-             :inherit [:app-state]
-             (let [is-done @(get-in app-state [:todos idx :is-done])]
-               (m/ListTile
+        (f/widget
+          :key idx
+          :inherit [:app-state]
+          :with [:let [{text :text priority :priority due-date :dueDate} @(get-in app-state [:todos idx])
+                       text-theme (-> theme .-textTheme)
+                       color-scheme (-> theme .-colorScheme)
+                       item-color (-> color-scheme .primary (.withOpacity (* 0.05 priority)))
+                       priority-icon-color (-> color-scheme .secondaryVariant (.withOpacity (* 0.2 priority)))]]
+          (let [is-done @(get-in app-state [:todos idx :is-done])]
+            (m/Column
+              :children
+              [(m/ListTile
                  :shape (m/RoundedRectangleBorder :borderRadius (m.BorderRadius/circular 6))
                  :tileColor item-color
                  :contentPadding (m.EdgeInsets/symmetric :vertical 15 :horizontal 30)
-                 :title (m/Text (:text todo) :style (-> text-theme .subtitle1
-                                                      (.copyWith :decoration (when is-done m.TextDecoration/lineThrough))))
-                 :subtitle (m/Text (formatted-date (:dueDate todo))
-                             :style (-> text-theme .bodyText2
-                                      (.copyWith :color accent-color :height 2 :decoration (when is-done m.TextDecoration/lineThrough))))
+                 :title
+                 (m/Text text
+                   :style (-> text-theme .subtitle1
+                            (.copyWith :decoration (when is-done m.TextDecoration/lineThrough))))
+                 :subtitle
+                 (m/Text (formatted-date due-date)
+                   :style (-> text-theme .bodyText2
+                            (.copyWith :color accent-color :height 2
+                              :decoration (when is-done
+                                            m.TextDecoration/lineThrough))))
                  :trailing
                  (m/Row :mainAxisSize m.MainAxisSize/min
                    :crossAxisAlignment m.CrossAxisAlignment/stretch
                    :children
-                   [(m/IconButton :onPressed (fn [] (swap! app-state assoc-in [:todos idx :is-done] (not is-done)) nil)
-                      :icon (m/Icon (if is-done m.Icons/close_sharp m.Icons/check_sharp))
-                      :iconSize 25)
+                   [(f/widget
+                      :inherit [:app-state]
+                      (m/IconButton
+                        :onPressed (fn [] (swap! app-state (fn [s] (assoc-in s [:todos idx :is-done] (not is-done)))) nil)
+                        :icon (m/Icon (if is-done m.Icons/close_sharp m.Icons/check_sharp))
+                        :iconSize 25))
                     (m/Icon m.Icons/arrow_upward_rounded :size 25 :color priority-icon-color)
                     (m/SizedBox :width 8)
-                    (m/Icon m.Icons/menu :size 25)]))))])))))
+                    (m/Icon m.Icons/menu :size 25)]))])))))))
 
 (defn add-todo-widget [toggle-is-adding-todo]
   (f/widget
@@ -159,10 +168,10 @@
                               (-> key .currentState .reset)
                               (swap! app-state
                                 (fn [s]
-                                  (doto (-> s
-                                          (update :todos conj @new-todo)
-                                          (update :todos/count inc))
-                                    dart:core/print)))
+                                  (-> s
+                                    (update :todos conj (assoc @new-todo :id (:todos/count s)))
+                                    (update :todos/count inc))))
+                              (vreset! new-todo {})
                               (toggle-is-adding-todo))
                             nil))
              (m/Padding :padding (m.EdgeInsets/all 10))
@@ -176,15 +185,15 @@
     (f/widget
       :state [is-loading true]
       :with [:let [_ ((fn []
-                            (try  (let [t (await (fetch-todos))]
-                                    (swap! app-state
-                                      (fn [s]
-                                        (let [s (update s :todos into t)]
-                                          (assoc s :todos/count (count (:todos s))))))
-                                    (reset! is-loading false))
-                                  (catch Exception e
-                                    (.showSnackBar scaffold-messenger
-                                      (m/SnackBar :content (m/Text "Error while fetching the todos!")))))))
+                        (try  (let [t (await (fetch-todos))]
+                                (swap! app-state
+                                  (fn [s]
+                                    (let [s (update s :todos into t)]
+                                      (assoc s :todos/count (count (:todos s))))))
+                                (reset! is-loading false))
+                              (catch Exception e
+                                (.showSnackBar scaffold-messenger
+                                  (m/SnackBar :content (m/Text "Error while fetching the todos!")))))))
                    is-adding-todo (m/ValueNotifier false)
                    toggle-is-adding-todo (fn [] (set! (.-value is-adding-todo) (not (.-value is-adding-todo))) nil)]]
       (f/nest
@@ -214,10 +223,24 @@
                   progress-widget
                   (f/widget
                     :inherit [:app-state]
-                    (m.ListView/builder
+                    (m.ReorderableListView/builder
                       :padding (m.EdgeInsets/only :bottom 90)
                       :itemCount @(get app-state :todos/count)
-                      :itemBuilder (fn [_ idx] (todo-item idx))))))))))
+                      :itemBuilder (fn [_ idx] (todo-item idx @(get-in app-state [:todos idx :id])))
+                      :onReorder
+                      (fn [old-idx new-idx]
+                        (swap! app-state
+                          (fn [s]
+                            (let [todos (:todos s)]
+                              (if (< new-idx old-idx)
+                                (let [p1 (conj (subvec todos 0 new-idx) (nth todos old-idx))
+                                      p2 (subvec todos new-idx old-idx)
+                                      p3 (subvec todos (inc old-idx))]
+                                  (assoc s :todos (into p1 (concat p2 p3))))
+                                (let [p1 (subvec todos 0 old-idx)
+                                      p2 (conj (subvec todos (inc old-idx) new-idx) (nth todos old-idx))
+                                      p3 (subvec todos new-idx)]
+                                  (assoc s :todos (into p1 (concat p2 p3)))))))))))))))))
 
 (def home-page
   (let [pages [todos-page
