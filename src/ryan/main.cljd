@@ -1,0 +1,100 @@
+(ns ryan.main
+  ;; pure dart package are imported using string
+  (:require ["package:flutter/material.dart" :as m]
+            ["dart:async" :as a]
+            ["package:google_fonts/google_fonts.dart" :as gf]
+            [cljd.flutter.alpha :as f]))
+
+;; ui/app_colors.dart
+(def primary-color (m/Color 0xff006837))
+(def primary-dark-color (m/Color 0xff004012))
+(def secondary-color (m/Color 0xffEFEFEF))
+(def accent-color (m/Color 0xffBA5A31))
+(def black m.Colors/black54)
+
+;; ui/_shared/progress_widget.dart
+(def progress-widget
+  (m/Center
+    :child
+    (m/CircularProgressIndicator
+      :valueColor
+      (m/AlwaysStoppedAnimation (.green m/Colors)))))
+
+(def app-bar
+  (m/AppBar
+    :centerTitle true
+    :title
+    (f/widget
+      :inherit [m/Theme]
+      (m/Text "The Morning App"
+        :style (-> theme .-textTheme .headline6 (.copyWith :color (.white m/Colors) :fontSize 24))))))
+
+(def bottom-navigation-bar
+  (m/BottomNavigationBar
+    :currentIndex 0
+    :onTap (fn [index] nil)
+    :items [(m/BottomNavigationBarItem
+              :icon (m/Icon (.today_outlined m/Icons))
+              :label "Todos")
+            (m/BottomNavigationBarItem
+              :icon (m/Icon (.article m/Icons))
+              :label "News")]))
+
+(def todos-page
+  (f/widget
+    :state [is-loading true]
+    :with [:let [is-adding-todo (m/ValueNotifier false)
+                 toggle-is-adding-todo (fn [] (set! (.-value is-adding-todo) (not (.-value is-adding-todo))) nil)]]
+    (f/nest
+      (m/WillPopScope :onWillPop (fn []
+                                   (when (.value is-adding-todo)
+                                     (do (toggle-is-adding-todo) (.value a/Future false)))
+                                   (.value a/Future true)))
+      (m/Scaffold
+        :floatingActionButton
+        (f/nest
+          (m/FloatingActionButton :onPressed (fn [] (toggle-is-adding-todo)) :backgroundColor accent-color)
+          (m/ValueListenableBuilder
+            :valueListenable is-adding-todo
+            :builder
+            (fn [_ is-adding-mode __]
+              (m/Icon (if is-adding-mode m.Icons/close m.Icons/add) :color m.Colors/white))))
+        :bottomSheet
+        (f/nest
+          (m/ValueListenableBuilder
+            :valueListenable is-adding-todo
+            :builder (fn [_ is-adding-mode child] (if (and is-adding-mode (not= child nil)) child m.SizedBox/shrink)))
+          (m/BottomSheet
+            :backgroundColor secondary-color
+            :onClosing (fn [])
+            :builder (fn [_] (m/Text. "AddTodoWidget") #_(m/AddTodoWidget :onSubmitTap #_addTodo))))
+        :body (if @is-loading progress-widget #_(buildTodoList) (m/Text "todolist"))))))
+
+(def home-page
+  (let [pages [todos-page
+               #_(m/NewsPage :newsRepository (m/NewsRepository :remoteDataSource (m/NewsRemoteDataSource)))]]
+    (m/Scaffold
+      :appBar app-bar
+      :body (nth pages 0)
+      :bottomNavigationBar bottom-navigation-bar)))
+
+
+(defn main []
+  (m.WidgetsFlutterBinding/ensureInitialized)
+  (m/runApp
+    (let [w700BitterFont (.bitter gf/GoogleFonts :fontWeight (.w700 m/FontWeight))]
+      (m/MaterialApp
+        :title "The Morning App"
+        :theme (m/ThemeData
+                 :colorScheme (.fromSwatch m/ColorScheme :primarySwatch (.green m/Colors))
+                 :primaryColor primary-color
+                 :primaryColorDark primary-dark-color
+                 :accentColor secondary-color
+                 :appBarTheme (m/AppBarTheme :brightness (.dark m/Brightness))
+                 :primaryTextTheme (m/TextTheme :headline6 w700BitterFont)
+                 :textTheme (m/TextTheme
+                              :subtitle1 (.apply w700BitterFont :color black)
+                              :headline6 (.apply w700BitterFont :color black)
+                              :bodyText2 (.apply w700BitterFont :color black)))
+        :home home-page
+        :debugShowCheckedModeBanner false))))
