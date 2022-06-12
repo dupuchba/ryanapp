@@ -2,8 +2,15 @@
   ;; pure dart package are imported using string
   (:require ["package:flutter/material.dart" :as m]
             ["dart:async" :as a]
+            ["package:intl/intl.dart" :as intl]
             ["package:google_fonts/google_fonts.dart" :as gf]
             [cljd.flutter.alpha :as f]))
+;; dates utils
+(defn ^String formatted-date [^DateTime date-time]
+  (-> (intl/DateFormat "MMM d yyyy") (.format date-time)))
+
+(defn ^String formatted-date-from-epoch [^int date-time]
+  (formatted-date (DateTime/fromMillisecondsSinceEpoch (* 1000 date-time))))
 
 ;; ui/app_colors.dart
 (def primary-color (m/Color 0xff006837))
@@ -13,14 +20,14 @@
 (def black m.Colors/black54)
 
 (def initial-todos
-  [{:text "Do Nothing" :dueDate (.now DateTime)}
-   {:text "Get back to 1985" :dueDate (-> DateTime (.now) (.add (Duration :hours 5))) :priority 5}
-   {:text "Buy a parrot and teach him to say ?help! I?ve been turned into a parrot!" :dueDate (-> DateTime (.now) (.add (Duration :days 1))) :priority 4}
-   {:text "Order Diet water whenever I go out to eat" :dueDate (-> DateTime (.now) (.add (Duration :days 2))) :priority 4}
-   {:text "Buy a turtle. Name it ?The Speed of Light.? Tell everyone that I can run faster than The Speed of Light." :dueDate (-> DateTime (.now) (.add (Duration :days 3))) :priority 4}
-   {:text "Hire two private investigators. Get them to follow each other." :dueDate (-> DateTime (.now) (.add (Duration :days 4))) :priority 3}
-   {:text "World Peace" :dueDate (-> DateTime (.now) (.add (Duration :days 5))) :priority 2}
-   {:text "Become a teacher. Make a test where every answer is ?C?." :dueDate (-> DateTime (.now) (.add (Duration :days 6))) :priority 1}])
+  [{:text "Do Nothing" :dueDate (.now DateTime) :priority 3 :is-done false}
+   {:text "Get back to 1985" :dueDate (-> DateTime (.now) (.add (Duration :hours 5))) :priority 5 :is-done false}
+   {:text "Buy a parrot and teach him to say ?help! I?ve been turned into a parrot!" :dueDate (-> DateTime (.now) (.add (Duration :days 1))) :priority 4 :is-done false}
+   {:text "Order Diet water whenever I go out to eat" :dueDate (-> DateTime (.now) (.add (Duration :days 2))) :priority 4 :is-done false}
+   {:text "Buy a turtle. Name it ?The Speed of Light.? Tell everyone that I can run faster than The Speed of Light." :dueDate (-> DateTime (.now) (.add (Duration :days 3))) :priority 4 :is-done false}
+   {:text "Hire two private investigators. Get them to follow each other." :dueDate (-> DateTime (.now) (.add (Duration :days 4))) :priority 3 :is-done false}
+   {:text "World Peace" :dueDate (-> DateTime (.now) (.add (Duration :days 5))) :priority 2 :is-done false}
+   {:text "Become a teacher. Make a test where every answer is ?C?." :dueDate (-> DateTime (.now) (.add (Duration :days 6))) :priority 1 :is-done false}])
 
 (defn ^a/Future fetch-todos []
   (a.Future/delayed (Duration :seconds 4)
@@ -56,14 +63,54 @@
               :icon (m/Icon (.article m/Icons))
               :label "News")]))
 
+(defn todo-item [idx]
+  (f/widget
+    :inherit [:app-state m/Theme]
+    (let [todo @(get-in app-state [:todos idx])
+          priority (:priority todo)
+          text-theme (-> theme .-textTheme)
+          color-scheme (-> theme .-colorScheme)
+          item-color (-> color-scheme .primary (.withOpacity (* 0.05 priority)))
+          priority-icon-color (-> color-scheme .secondaryVariant (.withOpacity (* 0.2 priority)))
+          is-deleted false]
+      (if is-deleted
+        m.SizedBox/shrink
+        (m/Column
+          :children
+          [(f/widget
+             :inherit [:app-state]
+             (let [is-done @(get-in app-state [:todos idx :is-done])]
+               (m/ListTile
+                 :shape (m/RoundedRectangleBorder :borderRadius (m.BorderRadius/circular 6))
+                 :tileColor item-color
+                 :contentPadding (m.EdgeInsets/symmetric :vertical 15 :horizontal 30)
+                 :title (m/Text (:text todo) :style (-> text-theme .subtitle1
+                                                      (.copyWith :decoration (when is-done m.TextDecoration/lineThrough))))
+                 :subtitle (m/Text (formatted-date (:dueDate todo))
+                             :style (-> text-theme .bodyText2
+                                      (.copyWith :color accent-color :height 2 :decoration (when is-done m.TextDecoration/lineThrough))))
+                 :trailing
+                 (m/Row :mainAxisSize m.MainAxisSize/min
+                   :crossAxisAlignment m.CrossAxisAlignment/stretch
+                   :children
+                   [(m/IconButton :onPressed (fn [] (swap! app-state assoc-in [:todos idx :is-done] (not is-done)) nil)
+                      :icon (m/Icon (if is-done m.Icons/close_sharp m.Icons/check_sharp))
+                      :iconSize 25)
+                    (m/Icon m.Icons/arrow_upward_rounded :size 25 :color priority-icon-color)
+                    (m/SizedBox :width 8)
+                    (m/Icon m.Icons/menu :size 25)]))))])))))
+
 (def todos-page
   (f/widget
-    :inherit [:todos m/ScaffoldMessenger]
+    :inherit [:app-state m/ScaffoldMessenger]
     (f/widget
       :state [is-loading true]
-      :with [:let [todos ((fn []
+      :with [:let [_ ((fn []
                             (try  (let [t (await (fetch-todos))]
-                                    (swap! todos into t)
+                                    (swap! app-state
+                                      (fn [s]
+                                        (let [s (update s :todos into t)]
+                                          (assoc s :todos/count (count (:todos s))))))
                                     (reset! is-loading false))
                                   (catch Exception e
                                     (.showSnackBar scaffold-messenger
@@ -93,7 +140,14 @@
               :backgroundColor secondary-color
               :onClosing (fn [])
               :builder (fn [_] (m/Text. "AddTodoWidget") #_(m/AddTodoWidget :onSubmitTap #_addTodo))))
-          :body (if @is-loading progress-widget #_(buildTodoList) (m/Text "todolist")))))))
+          :body (if @is-loading
+                  progress-widget
+                  (f/widget
+                    :inherit [:app-state]
+                    (m.ListView/builder
+                      :padding (m.EdgeInsets/only :bottom 90)
+                      :itemCount @(get app-state :todos/count)
+                      :itemBuilder (fn [_ idx] (todo-item idx))))))))))
 
 (def home-page
   (let [pages [todos-page
@@ -108,7 +162,8 @@
   (m/runApp
     (let [w700BitterFont (.bitter gf/GoogleFonts :fontWeight (.w700 m/FontWeight))]
       (f/widget
-        :bind {:todos []}
+        :bind {:app-state {:todos       []
+                           :todos/count 0}}
         (m/MaterialApp
           :title "The Morning App"
           :theme (m/ThemeData
