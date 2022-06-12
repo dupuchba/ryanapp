@@ -100,6 +100,76 @@
                     (m/SizedBox :width 8)
                     (m/Icon m.Icons/menu :size 25)]))))])))))
 
+(defn add-todo-widget [toggle-is-adding-todo]
+  (f/widget
+    :with [:let [new-todo (volatile! {})
+                 key (new #/(m/GlobalKey m/FormState))]]
+    (f/nest
+      (m/Form :key key)
+      (m/Padding :padding (m.EdgeInsets/all 15))
+      (m/Column
+        :mainAxisSize m.MainAxisSize/min
+        :crossAxisAlignment m.CrossAxisAlignment/stretch
+        :children
+        [(f/widget
+           :context ctx
+           :inherit [m/FocusScope]
+           :with [:let [initial-date (doto (DateTime/now)
+                                       (->> (vswap! new-todo assoc :dueDate)))]
+                  controller (m/TextEditingController :text (formatted-date initial-date))]
+           (m/TextFormField
+             :controller controller
+             :decoration (m/InputDecoration :labelText "Due Date")
+             :onTap (fn []
+                      (.unfocus focus-scope)
+                      (let [date (await (m/showDatePicker
+                                          :context ctx
+                                          :initialDate (DateTime/now)
+                                          :firstDate (DateTime/now)
+                                          :lastDate  (.add (DateTime/now) (Duration :days 36500))))]
+                        (when (and date (not= date initial-date))
+                          (set! (.-text controller) (formatted-date date))
+                          (vswap! new-todo assoc :dueDate date)))
+                      nil)))
+         (m/TextFormField
+           :decoration (m/InputDecoration :labelText "Todo")
+           :validator (fn [^String value]
+                        (when (or (nil? value) (.isEmpty value))
+                          "Please enter some text"))
+           :onSaved (fn [value] (vswap! new-todo assoc :text value)))
+         (m/TextFormField
+           :keyboardType m.TextInputType/number
+           :decoration (m/InputDecoration :labelText "Priority (0-5)")
+           :validator (fn [value]
+                        (cond
+                          (or (nil? value) (nil? (int/tryParse value)))
+                          "Please enter a number"
+                          (not (<= 0 (int/parse value) 5))
+                          "Please enter a number between 0 and 5"))
+           :onSaved (fn [value] (vswap! new-todo assoc :priority (int/parse value))))
+         (m/SizedBox :height 25)
+         (f/widget
+           :inherit [:app-state]
+           (f/nest
+             (m/ElevatedButton
+               :style (m/ButtonStyle :backgroundColor (. m/MaterialStateProperty #/(all m/Color) primary-color))
+               :onPressed (fn []
+                            (when (-> key .currentState .validate)
+                              (-> key .currentState .save)
+                              (-> key .currentState .reset)
+                              (swap! app-state
+                                (fn [s]
+                                  (doto (-> s
+                                          (update :todos conj @new-todo)
+                                          (update :todos/count inc))
+                                    dart:core/print)))
+                              (toggle-is-adding-todo))
+                            nil))
+             (m/Padding :padding (m.EdgeInsets/all 10))
+             (f/widget
+               :inherit [m/Theme]
+               (m/Text "Submit" :style (-> theme .-textTheme .headline6 (.copyWith :color m.Colors/white :fontSize 16))))))]))))
+
 (def todos-page
   (f/widget
     :inherit [:app-state m/ScaffoldMessenger]
@@ -139,7 +209,7 @@
             (m/BottomSheet
               :backgroundColor secondary-color
               :onClosing (fn [])
-              :builder (fn [_] (m/Text. "AddTodoWidget") #_(m/AddTodoWidget :onSubmitTap #_addTodo))))
+              :builder (fn [_] (add-todo-widget toggle-is-adding-todo))))
           :body (if @is-loading
                   progress-widget
                   (f/widget

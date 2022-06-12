@@ -12,10 +12,10 @@ import "package:intl/intl.dart" as i_intl;
 import "../cljd/flutter/alpha.dart" as lcocf_alpha;
 import "package:flutter/material.dart" as f_material;
 
-// BEGIN Reify$299
-class Reify$299 extends f_widgets.StatelessWidget {
+// BEGIN Reify$668
+class Reify$668 extends f_widgets.StatelessWidget {
 
-Reify$299(key$1, ):super(key: key$1, );
+Reify$668(key$1, ):super(key: key$1, );
 
 f_widgets.Widget build(f_widgets.BuildContext ctx$8999_$AUTO_$1, ){
 final f_material.ThemeData theme$1=(f_material.Theme.of(ctx$8999_$AUTO_$1, ));
@@ -23,13 +23,13 @@ return f_material.Text("The Morning App", style: ((theme$1.textTheme.headline6 a
 }
 }
 
-// END Reify$299
+// END Reify$668
 
-// BEGIN Reify$300
-class Reify$300 extends f_widgets.StatelessWidget {
+// BEGIN Reify$669
+class Reify$669 extends f_widgets.StatelessWidget {
 final idx$1;
 
-Reify$300(this.idx$1, key$2, ):super(key: key$2, );
+Reify$669(this.idx$1, key$2, ):super(key: key$2, );
 
 f_widgets.Widget build(f_widgets.BuildContext ctx$8999_$AUTO_$1, ){
 final dc.dynamic app_state$1=lcocf_alpha.get_state_of(ctx$8999_$AUTO_$1, const lcoc_core.Keyword(null, "app-state", 1064651244, ), lcoc_core.$_EMPTY_VECTOR, );
@@ -48,24 +48,24 @@ final dc.bool is_deleted$1=false;
 if(is_deleted$1){
 return (f_material.SizedBox.shrink());
 }
-final dc.List<dc.dynamic> fl$2=(dc.List<dc.dynamic>.filled(1, lcor_main.Reify$301(text_theme$1, todo$1, idx$1, item_color$1, priority_icon_color$1, null, ), ));
+final dc.List<dc.dynamic> fl$2=(dc.List<dc.dynamic>.filled(1, lcor_main.Reify$670(text_theme$1, todo$1, idx$1, item_color$1, priority_icon_color$1, null, ), ));
 final lcoc_core.PersistentVector $9=lcoc_core.$_vec_owning(fl$2, );
 final dc.List<f_material.Widget> casted$2=($9.cast<f_material.Widget>());
 return f_material.Column(children: casted$2, );
 }
 }
 
-// END Reify$300
+// END Reify$669
 
-// BEGIN Reify$301
-class Reify$301 extends f_widgets.StatelessWidget {
+// BEGIN Reify$670
+class Reify$670 extends f_widgets.StatelessWidget {
 final f_material.TextTheme text_theme$1;
 final todo$1;
 final idx$1;
 final f_material.Color item_color$1;
 final f_material.Color priority_icon_color$1;
 
-Reify$301(this.text_theme$1, this.todo$1, this.idx$1, this.item_color$1, this.priority_icon_color$1, key$1, ):super(key: key$1, );
+Reify$670(this.text_theme$1, this.todo$1, this.idx$1, this.item_color$1, this.priority_icon_color$1, key$1, ):super(key: key$1, );
 
 f_widgets.Widget build(f_widgets.BuildContext ctx$8999_$AUTO_$2, ){
 final dc.dynamic app_state$2=lcocf_alpha.get_state_of(ctx$8999_$AUTO_$2, const lcoc_core.Keyword(null, "app-state", 1064651244, ), lcoc_core.$_EMPTY_VECTOR, );
@@ -124,55 +124,362 @@ return f_material.ListTile(shape: f_material.RoundedRectangleBorder(borderRadius
 }
 }
 
-// END Reify$301
+// END Reify$670
 
-// BEGIN Reify$302
-class Reify$302 extends f_widgets.StatelessWidget {
+// BEGIN Reify$671
+class Reify$671 extends f_widgets.StatefulWidget {
+final lcoc_core.Volatile build$PLUS_dispose$9000_$AUTO_$1;
+final toggle_is_adding_todo$1;
 
-Reify$302(key$3, ):super(key: key$3, );
+Reify$671(this.build$PLUS_dispose$9000_$AUTO_$1, this.toggle_is_adding_todo$1, key$5, ):super(key: key$5, );
+
+void debugFillProperties(fsf_diagnostics.DiagnosticPropertiesBuilder props_builder$9008_$AUTO_$1, ){
+super.debugFillProperties(props_builder$9008_$AUTO_$1, );
+final fsf_diagnostics.DiagnosticPropertiesBuilder G$10170_$1=props_builder$9008_$AUTO_$1;
+return null;
+}
+
+f_widgets.State<f_widgets.StatefulWidget> createState(){
+return lcor_main.Reify$672(build$PLUS_dispose$9000_$AUTO_$1, toggle_is_adding_todo$1, );
+}
+}
+
+// END Reify$671
+
+// BEGIN Reify$672
+class Reify$672 extends f_widgets.State {
+final lcoc_core.Volatile build$PLUS_dispose$9000_$AUTO_$1;
+final toggle_is_adding_todo$1;
+
+Reify$672(this.build$PLUS_dispose$9000_$AUTO_$1, this.toggle_is_adding_todo$1, ):super();
+
+void initState(){
+super.initState();
+final lcoc_core.Volatile new_todo$1=lcoc_core.volatile$BANG_(lcoc_core.$_EMPTY_MAP, );
+final f_material.GlobalKey<f_material.FormState> key$1=f_material.GlobalKey<f_material.FormState>();
+final dc.List<dc.dynamic> fl$1=(dc.List<dc.dynamic>.filled(2, (dc.dynamic ctx$8999_$AUTO_$1, ){
+final f_material.EdgeInsets padding$1=(f_material.EdgeInsets.all(15, ));
+final f_material.MainAxisSize mainAxisSize$1=f_material.MainAxisSize.min;
+final f_material.CrossAxisAlignment crossAxisAlignment$1=f_material.CrossAxisAlignment.stretch;
+final lcoc_core.Volatile build$PLUS_dispose$9000_$AUTO_$2=lcoc_core.volatile$BANG_(null, );
+final dc.List<dc.dynamic> fl$2=(dc.List<dc.dynamic>.filled(5, lcor_main.Reify$673(new_todo$1, build$PLUS_dispose$9000_$AUTO_$2, null, ), ));
+fl$2[1]=f_material.TextFormField(decoration: f_material.InputDecoration(labelText: "Todo", ), validator: (dc.dynamic value$1, ){
+final dc.bool or$7228_$AUTO_$1=(null==(value$1 as dc.String));
+late final dc.bool $if_$3;
+if(or$7228_$AUTO_$1){
+$if_$3=or$7228_$AUTO_$1;
+}else{
+$if_$3=(value$1 as dc.String).isEmpty;
+}
+if($if_$3){
+return "Please enter some text";
+}
+return null;
+}, onSaved: (dc.dynamic value$2, ){
+final lcoc_core.Volatile o7651$4=new_todo$1;
+final lcoc_core.Volatile o7365$4=new_todo$1;
+final dc.dynamic coll7440$4=(o7365$4.$_deref$0());
+final lcoc_core.Keyword k7441$4=const lcoc_core.Keyword(null, "text", 501109834, );
+final dc.dynamic v7442$4=value$2;
+late final dc.dynamic new_value7652$4;
+if((coll7440$4 is lcoc_core.IAssociative$iface)){
+new_value7652$4=((coll7440$4 as lcoc_core.IAssociative$iface).$_assoc$2(k7441$4, (v7442$4 as dc.dynamic), ));
+}else{
+new_value7652$4=((lcoc_core.IAssociative.extensions(coll7440$4, ) as lcoc_core.IAssociative$ext).$_assoc$2(coll7440$4, k7441$4, (v7442$4 as dc.dynamic), ));
+}
+return (o7651$4.$_vreset$BANG_$1(new_value7652$4, ));
+}, );
+fl$2[2]=f_material.TextFormField(keyboardType: f_material.TextInputType.number, decoration: f_material.InputDecoration(labelText: "Priority (0-5)", ), validator: (dc.dynamic value$3, ){
+final dc.bool or$7228_$AUTO_$2=(null==(value$3 as dc.dynamic));
+late final dc.bool $if_$4;
+if(or$7228_$AUTO_$2){
+$if_$4=or$7228_$AUTO_$2;
+}else{
+$if_$4=(null==(dc.int.tryParse((value$3 as dc.String), )));
+}
+if($if_$4){
+return "Please enter a number";
+}
+final dc.int num$COLON_$LT_$EQ_10173$1=0;
+final dc.int num$COLON_$LT_$EQ_10174$1=(dc.int.parse((value$3 as dc.String), ));
+final dc.int num$COLON_$LT_$EQ_10175$1=5;
+final dc.bool $3=((num$COLON_$LT_$EQ_10173$1<=num$COLON_$LT_$EQ_10174$1)&&(num$COLON_$LT_$EQ_10174$1<=num$COLON_$LT_$EQ_10175$1));
+late final dc.bool $if_$5;
+if($3){
+$if_$5=false;
+}else{
+$if_$5=true;
+}
+if($if_$5){
+return "Please enter a number between 0 and 5";
+}
+return null;
+}, onSaved: (dc.dynamic value$4, ){
+final lcoc_core.Volatile o7651$5=new_todo$1;
+final lcoc_core.Volatile o7365$5=new_todo$1;
+final dc.dynamic coll7440$5=(o7365$5.$_deref$0());
+final lcoc_core.Keyword k7441$5=const lcoc_core.Keyword(null, "priority", 1692271548, );
+final dc.int v7442$5=(dc.int.parse((value$4 as dc.String), ));
+late final dc.dynamic new_value7652$5;
+if((coll7440$5 is lcoc_core.IAssociative$iface)){
+new_value7652$5=((coll7440$5 as lcoc_core.IAssociative$iface).$_assoc$2(k7441$5, v7442$5, ));
+}else{
+new_value7652$5=((lcoc_core.IAssociative.extensions(coll7440$5, ) as lcoc_core.IAssociative$ext).$_assoc$2(coll7440$5, k7441$5, v7442$5, ));
+}
+return (o7651$5.$_vreset$BANG_$1(new_value7652$5, ));
+}, );
+fl$2[3]=f_material.SizedBox(height: 25, );
+fl$2[4]=lcor_main.Reify$675(new_todo$1, toggle_is_adding_todo$1, key$1, null, );
+final lcoc_core.PersistentVector $2=lcoc_core.$_vec_owning(fl$2, );
+final dc.List<f_material.Widget> casted$1=($2.cast<f_material.Widget>());
+return f_material.Form(key: key$1, child: f_material.Padding(padding: padding$1, child: f_material.Column(mainAxisSize: mainAxisSize$1, crossAxisAlignment: crossAxisAlignment$1, children: casted$1, ), ), );
+}, ));
+fl$1[1]=(){
+return lcoc_core.vreset$BANG_(build$PLUS_dispose$9000_$AUTO_$1, null, );
+};
+final lcoc_core.PersistentVector $4=lcoc_core.$_vec_owning(fl$1, );
+lcoc_core.vreset$BANG_(build$PLUS_dispose$9000_$AUTO_$1, $4, );
+return null;
+}
+
+void dispose(){
+final dc.dynamic f$3=lcoc_core.second(lcoc_core.deref(build$PLUS_dispose$9000_$AUTO_$1, ), );
+if((f$3 is dc.Function)){
+(f$3 as dc.Function)();
+}else if((f$3 is lcoc_core.IFn$iface)){
+(f$3 as lcoc_core.IFn$iface).$_invoke$0();
+}else{
+lcoc_core.IFn.extensions(f$3, ).$_invoke$0(f$3, );
+}
+return (super.dispose());
+}
+
+f_widgets.Widget build(f_widgets.BuildContext ctx$8999_$AUTO_$4, ){
+final dc.dynamic f$4=lcoc_core.first(lcoc_core.deref(build$PLUS_dispose$9000_$AUTO_$1, ), );
+if((f$4 is dc.Function)){
+return (f$4 as dc.Function)(ctx$8999_$AUTO_$4, );
+}
+if((f$4 is lcoc_core.IFn$iface)){
+return ((f$4 as lcoc_core.IFn$iface).$_invoke$1(ctx$8999_$AUTO_$4, ));
+}
+return (lcoc_core.IFn.extensions(f$4, ).$_invoke$1(f$4, ctx$8999_$AUTO_$4, ));
+}
+}
+
+// END Reify$672
+
+// BEGIN Reify$673
+class Reify$673 extends f_widgets.StatefulWidget {
+final lcoc_core.Volatile new_todo$1;
+final lcoc_core.Volatile build$PLUS_dispose$9000_$AUTO_$2;
+
+Reify$673(this.new_todo$1, this.build$PLUS_dispose$9000_$AUTO_$2, key$2, ):super(key: key$2, );
+
+void debugFillProperties(fsf_diagnostics.DiagnosticPropertiesBuilder props_builder$9008_$AUTO_$2, ){
+super.debugFillProperties(props_builder$9008_$AUTO_$2, );
+final fsf_diagnostics.DiagnosticPropertiesBuilder G$10171_$1=props_builder$9008_$AUTO_$2;
+return null;
+}
+
+f_widgets.State<f_widgets.StatefulWidget> createState(){
+return lcor_main.Reify$674(new_todo$1, build$PLUS_dispose$9000_$AUTO_$2, );
+}
+}
+
+// END Reify$673
+
+// BEGIN Reify$674
+class Reify$674 extends f_widgets.State {
+final lcoc_core.Volatile new_todo$1;
+final lcoc_core.Volatile build$PLUS_dispose$9000_$AUTO_$2;
+
+Reify$674(this.new_todo$1, this.build$PLUS_dispose$9000_$AUTO_$2, ):super();
+
+void initState(){
+super.initState();
+final dc.DateTime G$10172_$1=(dc.DateTime.now());
+final lcoc_core.Volatile o7651$1=new_todo$1;
+final lcoc_core.Volatile o7365$1=new_todo$1;
+final dc.dynamic coll7440$1=(o7365$1.$_deref$0());
+final lcoc_core.Keyword k7441$1=const lcoc_core.Keyword(null, "dueDate", 722753905, );
+final dc.DateTime v7442$1=G$10172_$1;
+late final dc.dynamic new_value7652$1;
+if((coll7440$1 is lcoc_core.IAssociative$iface)){
+new_value7652$1=((coll7440$1 as lcoc_core.IAssociative$iface).$_assoc$2(k7441$1, v7442$1, ));
+}else{
+new_value7652$1=((lcoc_core.IAssociative.extensions(coll7440$1, ) as lcoc_core.IAssociative$ext).$_assoc$2(coll7440$1, k7441$1, v7442$1, ));
+}
+o7651$1.$_vreset$BANG_$1(new_value7652$1, );
+final dc.DateTime initial_date$1=G$10172_$1;
+final f_material.TextEditingController controller$1=f_material.TextEditingController(text: lcor_main.formatted_date(initial_date$1, ), );
+final dc.List<dc.dynamic> fl$3=(dc.List<dc.dynamic>.filled(2, (dc.dynamic ctx$1, ){
+final f_material.FocusScopeNode focus_scope$1=(f_material.FocusScope.of((ctx$1 as f_widgets.BuildContext), ));
+return f_material.TextFormField(controller: controller$1, decoration: f_material.InputDecoration(labelText: "Due Date", ), onTap: () async {
+focus_scope$1.unfocus();
+final dc.dynamic bindings$8061_$AUTO_$2=lcoc_core.$_DYNAMIC_BINDINGS;
+late final dc.DateTime? date$2;
+try {
+date$2=(await f_material.showDatePicker(context: (ctx$1 as f_widgets.BuildContext), initialDate: (dc.DateTime.now()), firstDate: (dc.DateTime.now()), lastDate: (dc.DateTime.now().add(dc.Duration(days: 36500, ), )), ));
+} finally {
+lcoc_core.$_DYNAMIC_BINDINGS=bindings$8061_$AUTO_$2;
+}
+final dc.DateTime? and$7187_$AUTO_$2=date$2;
+late final dc.Object? $if_$2;
+if((and$7187_$AUTO_$2!=null)){
+$if_$2=(lcoc_core.not$EQ_.$_invoke$2(date$2, initial_date$1, ));
+}else{
+$if_$2=and$7187_$AUTO_$2;
+}
+if((($if_$2!=false)&&($if_$2!=null))){
+final dc.String arg$2=lcor_main.formatted_date(date$2, );
+controller$1.text=arg$2;
+final lcoc_core.Volatile o7651$3=new_todo$1;
+final lcoc_core.Volatile o7365$3=new_todo$1;
+final dc.dynamic coll7440$3=(o7365$3.$_deref$0());
+final lcoc_core.Keyword k7441$3=const lcoc_core.Keyword(null, "dueDate", 722753905, );
+final dc.DateTime? v7442$3=date$2;
+late final dc.dynamic new_value7652$3;
+if((coll7440$3 is lcoc_core.IAssociative$iface)){
+new_value7652$3=((coll7440$3 as lcoc_core.IAssociative$iface).$_assoc$2(k7441$3, v7442$3, ));
+}else{
+new_value7652$3=((lcoc_core.IAssociative.extensions(coll7440$3, ) as lcoc_core.IAssociative$ext).$_assoc$2(coll7440$3, k7441$3, v7442$3, ));
+}
+o7651$3.$_vreset$BANG_$1(new_value7652$3, );
+}else{
+}
+return null;
+}, );
+}, ));
+fl$3[1]=(){
+controller$1.dispose();
+return lcoc_core.vreset$BANG_(build$PLUS_dispose$9000_$AUTO_$2, null, );
+};
+final lcoc_core.PersistentVector $1=lcoc_core.$_vec_owning(fl$3, );
+lcoc_core.vreset$BANG_(build$PLUS_dispose$9000_$AUTO_$2, $1, );
+return null;
+}
+
+void dispose(){
+final dc.dynamic f$1=lcoc_core.second(lcoc_core.deref(build$PLUS_dispose$9000_$AUTO_$2, ), );
+if((f$1 is dc.Function)){
+(f$1 as dc.Function)();
+}else if((f$1 is lcoc_core.IFn$iface)){
+(f$1 as lcoc_core.IFn$iface).$_invoke$0();
+}else{
+lcoc_core.IFn.extensions(f$1, ).$_invoke$0(f$1, );
+}
+return (super.dispose());
+}
+
+f_widgets.Widget build(f_widgets.BuildContext ctx$2, ){
+final dc.dynamic f$2=lcoc_core.first(lcoc_core.deref(build$PLUS_dispose$9000_$AUTO_$2, ), );
+if((f$2 is dc.Function)){
+return (f$2 as dc.Function)(ctx$2, );
+}
+if((f$2 is lcoc_core.IFn$iface)){
+return ((f$2 as lcoc_core.IFn$iface).$_invoke$1(ctx$2, ));
+}
+return (lcoc_core.IFn.extensions(f$2, ).$_invoke$1(f$2, ctx$2, ));
+}
+}
+
+// END Reify$674
+
+// BEGIN Reify$675
+class Reify$675 extends f_widgets.StatelessWidget {
+final lcoc_core.Volatile new_todo$1;
+final toggle_is_adding_todo$1;
+final f_material.GlobalKey<f_material.FormState> key$1;
+
+Reify$675(this.new_todo$1, this.toggle_is_adding_todo$1, this.key$1, key$4, ):super(key: key$4, );
+
+f_widgets.Widget build(f_widgets.BuildContext ctx$8999_$AUTO_$2, ){
+final dc.dynamic app_state$1=lcocf_alpha.get_state_of(ctx$8999_$AUTO_$2, const lcoc_core.Keyword(null, "app-state", 1064651244, ), lcoc_core.$_EMPTY_VECTOR, );
+return f_material.ElevatedButton(style: f_material.ButtonStyle(backgroundColor: ((f_material.MaterialStateProperty.all<f_material.Color>((lcor_main.primary_color as dc.dynamic), )) as f_material.MaterialStateProperty<f_material.Color?>?), ), onPressed: (){
+if(((key$1.currentState as f_material.FormState).validate())){
+(key$1.currentState as f_material.FormState).save();
+(key$1.currentState as f_material.FormState).reset();
+lcoc_core.swap$BANG_.$_invoke$2(app_state$1, (dc.dynamic s$1, ){
+final dc.dynamic G$10176_$1=(lcoc_core.update.$_invoke$3((lcoc_core.update.$_invoke$4(s$1, const lcoc_core.Keyword(null, "todos", 2448175341, ), lcoc_core.conj, lcoc_core.deref(new_todo$1, ), )), const lcoc_core.Keyword("todos", "count", 323013318, ), lcoc_core.inc, ));
+dc.print((G$10176_$1 as dc.Object?), );
+return G$10176_$1;
+}, );
+if((toggle_is_adding_todo$1 is dc.Function)){
+(toggle_is_adding_todo$1 as dc.Function)();
+}else if((toggle_is_adding_todo$1 is lcoc_core.IFn$iface)){
+(toggle_is_adding_todo$1 as lcoc_core.IFn$iface).$_invoke$0();
+}else{
+lcoc_core.IFn.extensions(toggle_is_adding_todo$1, ).$_invoke$0(toggle_is_adding_todo$1, );
+}
+}else{
+}
+return null;
+}, child: f_material.Padding(padding: (f_material.EdgeInsets.all(10, )), child: (lcor_main.Reify$676(null, ) as f_material.Widget?), ), );
+}
+}
+
+// END Reify$675
+
+// BEGIN Reify$676
+class Reify$676 extends f_widgets.StatelessWidget {
+
+Reify$676(key$3, ):super(key: key$3, );
+
+f_widgets.Widget build(f_widgets.BuildContext ctx$8999_$AUTO_$3, ){
+final f_material.ThemeData theme$1=(f_material.Theme.of(ctx$8999_$AUTO_$3, ));
+return f_material.Text("Submit", style: ((theme$1.textTheme.headline6 as f_material.TextStyle).copyWith(color: f_material.Colors.white, fontSize: 16, )), );
+}
+}
+
+// END Reify$676
+
+// BEGIN Reify$677
+class Reify$677 extends f_widgets.StatelessWidget {
+
+Reify$677(key$3, ):super(key: key$3, );
 
 f_widgets.Widget build(f_widgets.BuildContext ctx$8999_$AUTO_$1, ){
 final dc.dynamic app_state$1=lcocf_alpha.get_state_of(ctx$8999_$AUTO_$1, const lcoc_core.Keyword(null, "app-state", 1064651244, ), lcoc_core.$_EMPTY_VECTOR, );
 final f_material.ScaffoldMessengerState scaffold_messenger$1=(f_material.ScaffoldMessenger.of(ctx$8999_$AUTO_$1, ));
 final lcoc_core.Volatile build$PLUS_dispose$9000_$AUTO_$1=lcoc_core.volatile$BANG_(null, );
 final lcoc_core.Atom is_loading$1=(lcoc_core.atom.$_invoke$1(true, ));
-return lcor_main.Reify$303(is_loading$1, build$PLUS_dispose$9000_$AUTO_$1, scaffold_messenger$1, app_state$1, null, );
+return lcor_main.Reify$678(is_loading$1, build$PLUS_dispose$9000_$AUTO_$1, scaffold_messenger$1, app_state$1, null, );
 }
 }
 
-// END Reify$302
+// END Reify$677
 
-// BEGIN Reify$303
-class Reify$303 extends f_widgets.StatefulWidget {
+// BEGIN Reify$678
+class Reify$678 extends f_widgets.StatefulWidget {
 final lcoc_core.Atom is_loading$1;
 final lcoc_core.Volatile build$PLUS_dispose$9000_$AUTO_$1;
 final f_material.ScaffoldMessengerState scaffold_messenger$1;
 final app_state$1;
 
-Reify$303(this.is_loading$1, this.build$PLUS_dispose$9000_$AUTO_$1, this.scaffold_messenger$1, this.app_state$1, key$2, ):super(key: key$2, );
+Reify$678(this.is_loading$1, this.build$PLUS_dispose$9000_$AUTO_$1, this.scaffold_messenger$1, this.app_state$1, key$2, ):super(key: key$2, );
 
 void debugFillProperties(fsf_diagnostics.DiagnosticPropertiesBuilder props_builder$9008_$AUTO_$1, ){
 super.debugFillProperties(props_builder$9008_$AUTO_$1, );
-final fsf_diagnostics.DiagnosticPropertiesBuilder G$9773_$1=props_builder$9008_$AUTO_$1;
-G$9773_$1.add(f_foundation.MessageProperty("atom", (lcoc_core.pr_str.$_invoke$1(lcoc_core.deref(is_loading$1, ), )), ), );
+final fsf_diagnostics.DiagnosticPropertiesBuilder G$10177_$1=props_builder$9008_$AUTO_$1;
+G$10177_$1.add(f_foundation.MessageProperty("atom", (lcoc_core.pr_str.$_invoke$1(lcoc_core.deref(is_loading$1, ), )), ), );
 return null;
 }
 
 f_widgets.State<f_widgets.StatefulWidget> createState(){
-return lcor_main.Reify$304(is_loading$1, build$PLUS_dispose$9000_$AUTO_$1, scaffold_messenger$1, app_state$1, );
+return lcor_main.Reify$679(is_loading$1, build$PLUS_dispose$9000_$AUTO_$1, scaffold_messenger$1, app_state$1, );
 }
 }
 
-// END Reify$303
+// END Reify$678
 
-// BEGIN Reify$304
-class Reify$304 extends f_widgets.State {
+// BEGIN Reify$679
+class Reify$679 extends f_widgets.State {
 final lcoc_core.Atom is_loading$1;
 final lcoc_core.Volatile build$PLUS_dispose$9000_$AUTO_$1;
 final f_material.ScaffoldMessengerState scaffold_messenger$1;
 final app_state$1;
 
-Reify$304(this.is_loading$1, this.build$PLUS_dispose$9000_$AUTO_$1, this.scaffold_messenger$1, this.app_state$1, ):super();
+Reify$679(this.is_loading$1, this.build$PLUS_dispose$9000_$AUTO_$1, this.scaffold_messenger$1, this.app_state$1, ):super();
 
 void initState(){
 super.initState();
@@ -224,7 +531,7 @@ late final dc.dynamic $if_$4;
 if(((test$3!=false)&&(test$3!=null))){
 $if_$4=lcor_main.progress_widget;
 }else{
-$if_$4=lcor_main.Reify$305(null, );
+$if_$4=lcor_main.Reify$680(null, );
 }
 late final f_material.Widget? $if_$5;
 if((null!=$if_$4)){
@@ -265,7 +572,7 @@ return (f_material.SizedBox.shrink());
 }, child: f_material.BottomSheet(backgroundColor: (lcor_main.secondary_color as f_material.Color?), onClosing: (){
 return null;
 }, builder: (dc.dynamic $UNDERSCORE_$4, ){
-return f_material.Text("AddTodoWidget", );
+return lcor_main.add_todo_widget(toggle_is_adding_todo$1, );
 }, ), ), body: $if_$5, ), );
 }, ));
 fl$1[1]=(){
@@ -306,12 +613,12 @@ return (lcoc_core.IFn.extensions(f$2, ).$_invoke$1(f$2, ctx$8999_$AUTO_$4, ));
 }
 }
 
-// END Reify$304
+// END Reify$679
 
-// BEGIN Reify$305
-class Reify$305 extends f_widgets.StatelessWidget {
+// BEGIN Reify$680
+class Reify$680 extends f_widgets.StatelessWidget {
 
-Reify$305(key$1, ):super(key: key$1, );
+Reify$680(key$1, ):super(key: key$1, );
 
 f_widgets.Widget build(f_widgets.BuildContext ctx$8999_$AUTO_$3, ){
 final dc.dynamic app_state$2=lcocf_alpha.get_state_of(ctx$8999_$AUTO_$3, const lcoc_core.Keyword(null, "app-state", 1064651244, ), lcoc_core.$_EMPTY_VECTOR, );
@@ -321,48 +628,48 @@ return lcor_main.todo_item(idx$1, );
 }
 }
 
-// END Reify$305
+// END Reify$680
 
-// BEGIN Reify$306
-class Reify$306 extends f_widgets.StatelessWidget {
+// BEGIN Reify$681
+class Reify$681 extends f_widgets.StatelessWidget {
 final fsp_text_style.TextStyle w700BitterFont$1;
 
-Reify$306(this.w700BitterFont$1, key$1, ):super(key: key$1, );
+Reify$681(this.w700BitterFont$1, key$1, ):super(key: key$1, );
 
 f_widgets.Widget build(f_widgets.BuildContext ctx$8999_$AUTO_$1, ){
 return f_material.MaterialApp(title: "The Morning App", theme: f_material.ThemeData(colorScheme: (f_material.ColorScheme.fromSwatch(primarySwatch: f_material.Colors.green, )), primaryColor: (lcor_main.primary_color as f_material.Color?), primaryColorDark: (lcor_main.primary_dark_color as f_material.Color?), accentColor: (lcor_main.secondary_color as f_material.Color?), appBarTheme: f_material.AppBarTheme(brightness: f_material.Brightness.dark, ), primaryTextTheme: f_material.TextTheme(headline6: w700BitterFont$1, ), textTheme: f_material.TextTheme(subtitle1: (w700BitterFont$1.apply(color: (lcor_main.black as d_ui.Color?), )), headline6: (w700BitterFont$1.apply(color: (lcor_main.black as d_ui.Color?), )), bodyText2: (w700BitterFont$1.apply(color: (lcor_main.black as d_ui.Color?), )), ), ), home: (lcor_main.home_page as f_material.Widget?), debugShowCheckedModeBanner: false, );
 }
 }
 
-// END Reify$306
+// END Reify$681
 
-// BEGIN Reify$307
-class Reify$307 extends f_widgets.StatefulWidget {
+// BEGIN Reify$682
+class Reify$682 extends f_widgets.StatefulWidget {
 final lcoc_core.Atom bindings$9012_$AUTO_$1;
 final user_widget$9011_$AUTO_$1;
 
-Reify$307(this.bindings$9012_$AUTO_$1, this.user_widget$9011_$AUTO_$1, key$2, ):super(key: key$2, );
+Reify$682(this.bindings$9012_$AUTO_$1, this.user_widget$9011_$AUTO_$1, key$2, ):super(key: key$2, );
 
 void debugFillProperties(fsf_diagnostics.DiagnosticPropertiesBuilder props_builder$9008_$AUTO_$1, ){
 super.debugFillProperties(props_builder$9008_$AUTO_$1, );
-final fsf_diagnostics.DiagnosticPropertiesBuilder G$9774_$1=props_builder$9008_$AUTO_$1;
-G$9774_$1.add(f_foundation.MessageProperty("atom", (lcoc_core.pr_str.$_invoke$1(lcoc_core.deref(bindings$9012_$AUTO_$1, ), )), ), );
+final fsf_diagnostics.DiagnosticPropertiesBuilder G$10178_$1=props_builder$9008_$AUTO_$1;
+G$10178_$1.add(f_foundation.MessageProperty("atom", (lcoc_core.pr_str.$_invoke$1(lcoc_core.deref(bindings$9012_$AUTO_$1, ), )), ), );
 return null;
 }
 
 f_widgets.State<f_widgets.StatefulWidget> createState(){
-return lcor_main.Reify$308(bindings$9012_$AUTO_$1, user_widget$9011_$AUTO_$1, );
+return lcor_main.Reify$683(bindings$9012_$AUTO_$1, user_widget$9011_$AUTO_$1, );
 }
 }
 
-// END Reify$307
+// END Reify$682
 
-// BEGIN Reify$308
-class Reify$308 extends f_widgets.State {
+// BEGIN Reify$683
+class Reify$683 extends f_widgets.State {
 final lcoc_core.Atom bindings$9012_$AUTO_$1;
 final user_widget$9011_$AUTO_$1;
 
-Reify$308(this.bindings$9012_$AUTO_$1, this.user_widget$9011_$AUTO_$1, ):super();
+Reify$683(this.bindings$9012_$AUTO_$1, this.user_widget$9011_$AUTO_$1, ):super();
 
 void initState(){
 super.initState();
@@ -384,15 +691,23 @@ return lcocf_alpha.InheritedBindings(bindings$9012_$AUTO_$1, pctx$9013_$AUTO_$1,
 }
 }
 
-// END Reify$308
+// END Reify$683
 
 // BEGIN accent-color
 var accent_color=f_material.Color(4290402865, );
 
 // END accent-color
 
+// BEGIN add-todo-widget
+dc.dynamic add_todo_widget(dc.dynamic toggle_is_adding_todo$1, ){
+final lcoc_core.Volatile build$PLUS_dispose$9000_$AUTO_$1=lcoc_core.volatile$BANG_(null, );
+return lcor_main.Reify$671(build$PLUS_dispose$9000_$AUTO_$1, toggle_is_adding_todo$1, null, );
+}
+
+// END add-todo-widget
+
 // BEGIN app-bar
-var app_bar=f_material.AppBar(centerTitle: true, title: (lcor_main.Reify$299(null, ) as f_material.Widget?), );
+var app_bar=f_material.AppBar(centerTitle: true, title: (lcor_main.Reify$668(null, ) as f_material.Widget?), );
 
 // END app-bar
 
@@ -542,7 +857,7 @@ return $2;
 dc.dynamic main(){
 f_material.WidgetsFlutterBinding.ensureInitialized();
 final fsp_text_style.TextStyle w700BitterFont$1=(g_google_fonts.GoogleFonts.bitter(fontWeight: f_material.FontWeight.w700, ));
-final dc.dynamic user_widget$9011_$AUTO_$1=lcor_main.Reify$306(w700BitterFont$1, null, );
+final dc.dynamic user_widget$9011_$AUTO_$1=lcor_main.Reify$681(w700BitterFont$1, null, );
 final dc.List<dc.dynamic> fl$1=(dc.List<dc.dynamic>.filled(2, const lcoc_core.Keyword(null, "app-state", 1064651244, ), ));
 final dc.List<dc.dynamic> fl$2=(dc.List<dc.dynamic>.filled(4, const lcoc_core.Keyword(null, "todos", 2448175341, ), ));
 fl$2[1]=lcoc_core.$_EMPTY_VECTOR;
@@ -553,7 +868,7 @@ final dc.dynamic $3=lcocf_alpha.ensure_model($2, );
 fl$1[1]=$3;
 final lcoc_core.PersistentHashMap $1=lcoc_core.$_map_lit(fl$1, );
 final lcoc_core.Atom bindings$9012_$AUTO_$1=(lcoc_core.atom.$_invoke$1($1, ));
-final f_material.Widget cast$1=(lcor_main.Reify$307(bindings$9012_$AUTO_$1, user_widget$9011_$AUTO_$1, null, ) as f_material.Widget);
+final f_material.Widget cast$1=(lcor_main.Reify$682(bindings$9012_$AUTO_$1, user_widget$9011_$AUTO_$1, null, ) as f_material.Widget);
 return f_material.runApp(cast$1, );
 }
 
@@ -581,12 +896,12 @@ var secondary_color=f_material.Color(4293914607, );
 
 // BEGIN todo-item
 dc.dynamic todo_item(dc.dynamic idx$1, ){
-return lcor_main.Reify$300(idx$1, null, );
+return lcor_main.Reify$669(idx$1, null, );
 }
 
 // END todo-item
 
 // BEGIN todos-page
-var todos_page=lcor_main.Reify$302(null, );
+var todos_page=lcor_main.Reify$677(null, );
 
 // END todos-page
