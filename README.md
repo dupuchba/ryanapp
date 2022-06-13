@@ -1,16 +1,28 @@
-# ryantuto
+# The Morning App
 
-A new Flutter project.
+Translated this app in ClojureDart
+https://www.raywenderlich.com/22416843-unlocking-your-flutter-widgets-with-keys
 
-## Getting Started
+The code is located under `src/ryan/main.cljd`
 
-This project is a starting point for a Flutter application.
+### Status:
 
-A few resources to get you started if this is your first Flutter project:
+- [X] Todo page done
+- [ ] News page to do
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+### Note:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Review, PR welcomed :-) !
+You can also help ClojureDart development by sponsoring our work
+- Christophe https://github.com/cgrand
+- Me https://github.com/dupuchba
+
+### Run the App:
+
+`flutter run` at the root of the project
+
+### Modify the code:
+
+1. Do this [ClojureDart quick start](https://github.com/Tensegritics/ClojureDart/blob/main/doc/quick-start.md)
+2. Launch a Simulator
+3. Launch the cljd cli `clj -M -m clj.build flutter`

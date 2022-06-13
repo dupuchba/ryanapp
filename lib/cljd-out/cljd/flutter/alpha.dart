@@ -124,8 +124,8 @@ $if_$1=((lcoc_core.ISeqable.extensions((o7310$1 as dc.dynamic), ) as lcoc_core.I
 }
 late final dc.dynamic $if_$2;
 if((($if_$1!=false)&&($if_$1!=null))){
-$if_$2=(dc.dynamic p1$9182_$SHARP_$1, ){
-return (lcoc_core.update_in.$_invoke$3(p1$9182_$SHARP_$1, path, f$1, ));
+$if_$2=(dc.dynamic p1$9092_$SHARP_$1, ){
+return (lcoc_core.update_in.$_invoke$3(p1$9092_$SHARP_$1, path, f$1, ));
 };
 }else{
 $if_$2=f$1;
@@ -149,18 +149,18 @@ $if_$3=((lcoc_core.ISeqable.extensions((o7310$2 as dc.dynamic), ) as lcoc_core.I
 }
 late final dc.Function $if_$4;
 if((($if_$3!=false)&&($if_$3!=null))){
-$if_$4=(dc.dynamic p1$9183_$SHARP_$1, ){
-return (lcoc_core.update_in.$_invoke$4(p1$9183_$SHARP_$1, path, f$2, a$1, ));
+$if_$4=(dc.dynamic p1$9093_$SHARP_$1, ){
+return (lcoc_core.update_in.$_invoke$4(p1$9093_$SHARP_$1, path, f$2, a$1, ));
 };
 }else{
-$if_$4=(dc.dynamic p1$9184_$SHARP_$1, ){
+$if_$4=(dc.dynamic p1$9094_$SHARP_$1, ){
 if((f$2 is dc.Function)){
-return (f$2 as dc.Function)(p1$9184_$SHARP_$1, a$1, );
+return (f$2 as dc.Function)(p1$9094_$SHARP_$1, a$1, );
 }
 if((f$2 is lcoc_core.IFn$iface)){
-return ((f$2 as lcoc_core.IFn$iface).$_invoke$2(p1$9184_$SHARP_$1, a$1, ));
+return ((f$2 as lcoc_core.IFn$iface).$_invoke$2(p1$9094_$SHARP_$1, a$1, ));
 }
-return (lcoc_core.IFn.extensions(f$2, ).$_invoke$2(f$2, p1$9184_$SHARP_$1, a$1, ));
+return (lcoc_core.IFn.extensions(f$2, ).$_invoke$2(f$2, p1$9094_$SHARP_$1, a$1, ));
 };
 }
 if((swp$BANG_ is dc.Function)){
@@ -182,18 +182,18 @@ $if_$5=((lcoc_core.ISeqable.extensions((o7310$3 as dc.dynamic), ) as lcoc_core.I
 }
 late final dc.Function $if_$6;
 if((($if_$5!=false)&&($if_$5!=null))){
-$if_$6=(dc.dynamic p1$9185_$SHARP_$1, ){
-return (lcoc_core.update_in.$_invoke$5(p1$9185_$SHARP_$1, path, f$3, a$2, b$1, ));
+$if_$6=(dc.dynamic p1$9095_$SHARP_$1, ){
+return (lcoc_core.update_in.$_invoke$5(p1$9095_$SHARP_$1, path, f$3, a$2, b$1, ));
 };
 }else{
-$if_$6=(dc.dynamic p1$9186_$SHARP_$1, ){
+$if_$6=(dc.dynamic p1$9096_$SHARP_$1, ){
 if((f$3 is dc.Function)){
-return (f$3 as dc.Function)(p1$9186_$SHARP_$1, a$2, b$1, );
+return (f$3 as dc.Function)(p1$9096_$SHARP_$1, a$2, b$1, );
 }
 if((f$3 is lcoc_core.IFn$iface)){
-return ((f$3 as lcoc_core.IFn$iface).$_invoke$3(p1$9186_$SHARP_$1, a$2, b$1, ));
+return ((f$3 as lcoc_core.IFn$iface).$_invoke$3(p1$9096_$SHARP_$1, a$2, b$1, ));
 }
-return (lcoc_core.IFn.extensions(f$3, ).$_invoke$3(f$3, p1$9186_$SHARP_$1, a$2, b$1, ));
+return (lcoc_core.IFn.extensions(f$3, ).$_invoke$3(f$3, p1$9096_$SHARP_$1, a$2, b$1, ));
 };
 }
 if((swp$BANG_ is dc.Function)){
@@ -215,12 +215,12 @@ $if_$7=((lcoc_core.ISeqable.extensions((o7310$4 as dc.dynamic), ) as lcoc_core.I
 }
 late final dc.Function $if_$8;
 if((($if_$7!=false)&&($if_$7!=null))){
-$if_$8=(dc.dynamic p1$9187_$SHARP_$1, ){
-return (lcoc_core.apply.$_invoke$7(lcoc_core.update_in, p1$9187_$SHARP_$1, path, f$4, a$3, b$2, xs$1, ));
+$if_$8=(dc.dynamic p1$9097_$SHARP_$1, ){
+return (lcoc_core.apply.$_invoke$7(lcoc_core.update_in, p1$9097_$SHARP_$1, path, f$4, a$3, b$2, xs$1, ));
 };
 }else{
-$if_$8=(dc.dynamic p1$9188_$SHARP_$1, ){
-return (lcoc_core.apply.$_invoke$5(f$4, p1$9188_$SHARP_$1, a$3, b$2, xs$1, ));
+$if_$8=(dc.dynamic p1$9098_$SHARP_$1, ){
+return (lcoc_core.apply.$_invoke$5(f$4, p1$9098_$SHARP_$1, a$3, b$2, xs$1, ));
 };
 }
 if((swp$BANG_ is dc.Function)){
@@ -242,8 +242,8 @@ $if_$9=((lcoc_core.ISeqable.extensions((o7310$5 as dc.dynamic), ) as lcoc_core.I
 }
 late final dc.dynamic $if_$10;
 if((($if_$9!=false)&&($if_$9!=null))){
-$if_$10=(dc.dynamic p1$9189_$SHARP_$1, ){
-return lcoc_core.assoc_in(p1$9189_$SHARP_$1, path, v$PRIME_$1, );
+$if_$10=(dc.dynamic p1$9099_$SHARP_$1, ){
+return lcoc_core.assoc_in(p1$9099_$SHARP_$1, path, v$PRIME_$1, );
 };
 }else{
 $if_$10=lcoc_core.constantly(v$PRIME_$1, );
@@ -392,31 +392,31 @@ return (lcoc_core.not$EQ_.$_invoke$2(snapshot, (prev_this$1 as lcocf_alpha.Inher
 
 dc.bool updateShouldNotifyDependent(f_widgets.InheritedModel<dc.dynamic> prev_this$2, dc.Set<dc.dynamic> aspects$1, ){
 final dc.dynamic prev_snapshot$1=(prev_this$2 as lcocf_alpha.InheritedBindings).snapshot;
-return lcoc_core.boolean(lcoc_core.some((dc.dynamic p$9190_$1, ){
-final dc.dynamic vec$9191_$1=p$9190_$1;
-final dc.dynamic name$2=(lcoc_core.nth.$_invoke$3(vec$9191_$1, 0, null, ));
-final dc.dynamic q$1=(lcoc_core.nth.$_invoke$3(vec$9191_$1, 1, null, ));
-late final dc.dynamic v9088$1;
+return lcoc_core.boolean(lcoc_core.some((dc.dynamic p$9100_$1, ){
+final dc.dynamic vec$9101_$1=p$9100_$1;
+final dc.dynamic name$2=(lcoc_core.nth.$_invoke$3(vec$9101_$1, 0, null, ));
+final dc.dynamic q$1=(lcoc_core.nth.$_invoke$3(vec$9101_$1, 1, null, ));
+late final dc.dynamic v8998$1;
 if((snapshot is dc.Function)){
-v9088$1=(snapshot as dc.Function)(name$2, );
+v8998$1=(snapshot as dc.Function)(name$2, );
 }else if((snapshot is lcoc_core.IFn$iface)){
-v9088$1=((snapshot as lcoc_core.IFn$iface).$_invoke$1(name$2, ));
+v8998$1=((snapshot as lcoc_core.IFn$iface).$_invoke$1(name$2, ));
 }else{
-v9088$1=(lcoc_core.IFn.extensions(snapshot, ).$_invoke$1(snapshot, name$2, ));
+v8998$1=(lcoc_core.IFn.extensions(snapshot, ).$_invoke$1(snapshot, name$2, ));
 }
-late final dc.dynamic prev_v9089$1;
+late final dc.dynamic prev_v8999$1;
 if((prev_snapshot$1 is dc.Function)){
-prev_v9089$1=(prev_snapshot$1 as dc.Function)(name$2, );
+prev_v8999$1=(prev_snapshot$1 as dc.Function)(name$2, );
 }else if((prev_snapshot$1 is lcoc_core.IFn$iface)){
-prev_v9089$1=((prev_snapshot$1 as lcoc_core.IFn$iface).$_invoke$1(name$2, ));
+prev_v8999$1=((prev_snapshot$1 as lcoc_core.IFn$iface).$_invoke$1(name$2, ));
 }else{
-prev_v9089$1=(lcoc_core.IFn.extensions(prev_snapshot$1, ).$_invoke$1(prev_snapshot$1, name$2, ));
+prev_v8999$1=(lcoc_core.IFn.extensions(prev_snapshot$1, ).$_invoke$1(prev_snapshot$1, name$2, ));
 }
-final dc.dynamic q9090$1=q$1;
-if((v9088$1 is lcocf_alpha.IModel$iface)){
-return ((v9088$1 as lcocf_alpha.IModel$iface).$_updated$QMARK_$2(prev_v9089$1, (q9090$1 as dc.dynamic), ));
+final dc.dynamic q9000$1=q$1;
+if((v8998$1 is lcocf_alpha.IModel$iface)){
+return ((v8998$1 as lcocf_alpha.IModel$iface).$_updated$QMARK_$2(prev_v8999$1, (q9000$1 as dc.dynamic), ));
 }
-return ((lcocf_alpha.IModel.extensions(v9088$1, ) as lcocf_alpha.IModel$ext).$_updated$QMARK_$2(v9088$1, prev_v9089$1, (q9090$1 as dc.dynamic), ));
+return ((lcocf_alpha.IModel.extensions(v8998$1, ) as lcocf_alpha.IModel$ext).$_updated$QMARK_$2(v8998$1, prev_v8999$1, (q9000$1 as dc.dynamic), ));
 }, aspects$1, ), );
 }
 }
@@ -451,11 +451,11 @@ dc.dynamic noSuchMethod(i)=>super.noSuchMethod(i);
 
 // BEGIN camel-kebab
 dc.dynamic camel_kebab(dc.dynamic s$1, ){
-return lcoc_string.replace(s$1, dc.RegExp("(^[A-Z])|[A-Z]", ), (dc.dynamic p$9121_$1, ){
-final dc.dynamic vec$9122_$1=p$9121_$1;
-final dc.dynamic s$2=(lcoc_core.nth.$_invoke$3(vec$9122_$1, 0, null, ));
-final dc.dynamic start$1=(lcoc_core.nth.$_invoke$3(vec$9122_$1, 1, null, ));
-final dc.String G$9125_$1=lcoc_string.lower_case(s$2, );
+return lcoc_string.replace(s$1, dc.RegExp("(^[A-Z])|[A-Z]", ), (dc.dynamic p$9031_$1, ){
+final dc.dynamic vec$9032_$1=p$9031_$1;
+final dc.dynamic s$2=(lcoc_core.nth.$_invoke$3(vec$9032_$1, 0, null, ));
+final dc.dynamic start$1=(lcoc_core.nth.$_invoke$3(vec$9032_$1, 1, null, ));
+final dc.String G$9035_$1=lcoc_string.lower_case(s$2, );
 late final dc.bool $if_$1;
 if(((start$1!=false)&&(start$1!=null))){
 $if_$1=false;
@@ -463,9 +463,9 @@ $if_$1=false;
 $if_$1=true;
 }
 if($if_$1){
-return (lcoc_core.str.$_invoke$2("-", G$9125_$1, ));
+return (lcoc_core.str.$_invoke$2("-", G$9035_$1, ));
 }
-return G$9125_$1;
+return G$9035_$1;
 }, );
 }
 
@@ -492,22 +492,22 @@ throw dc.Exception((lcoc_core.str.$_invoke$2("No inherited state for id", id$1, 
 final f_widgets.InheritedElement? elt$1=temp$7200_$AUTO_$1;
 final lcocf_alpha.InheritedBindings ib$1=((elt$1 as f_widgets.InheritedElement).widget as lcocf_alpha.InheritedBindings);
 if((ib$1.isSupportedAspect((id$1 as dc.Object), ))){
-final dc.dynamic v9080$1=(lcoc_core.$get_.$_invoke$2(ib$1.snapshot, id$1, ));
-final dc.dynamic args9081$1=args$1;
-dc.dynamic swp$BANG_9082$1(dc.dynamic p1$9194_$SHARP_$1, ){
-return (lcoc_core.swap$BANG_.$_invoke$5(ib$1.state, lcoc_core.update, id$1, lcocf_alpha.$_update, p1$9194_$SHARP_$1, ));
+final dc.dynamic v8990$1=(lcoc_core.$get_.$_invoke$2(ib$1.snapshot, id$1, ));
+final dc.dynamic args8991$1=args$1;
+dc.dynamic swp$BANG_8992$1(dc.dynamic p1$9104_$SHARP_$1, ){
+return (lcoc_core.swap$BANG_.$_invoke$5(ib$1.state, lcoc_core.update, id$1, lcocf_alpha.$_update, p1$9104_$SHARP_$1, ));
 }
-f_widgets.InheritedWidget trck$BANG_9083$1(dc.dynamic p1$9195_$SHARP_$1, ){
+f_widgets.InheritedWidget trck$BANG_8993$1(dc.dynamic p1$9105_$SHARP_$1, ){
 final f_widgets.InheritedElement arg$1=(elt$1 as f_widgets.InheritedElement);
 final dc.List<dc.dynamic> fl$1=(dc.List<dc.dynamic>.filled(2, id$1, ));
-fl$1[1]=p1$9195_$SHARP_$1;
+fl$1[1]=p1$9105_$SHARP_$1;
 final lcoc_core.PersistentVector $1=lcoc_core.$_vec_owning(fl$1, );
 return ((ctx$1 as f_widgets.BuildContext).dependOnInheritedElement(arg$1, aspect: $1, ));
 }
-if((v9080$1 is lcocf_alpha.IModel$iface)){
-return ((v9080$1 as lcocf_alpha.IModel$iface).$_state$3((args9081$1 as dc.dynamic), swp$BANG_9082$1, trck$BANG_9083$1, ));
+if((v8990$1 is lcocf_alpha.IModel$iface)){
+return ((v8990$1 as lcocf_alpha.IModel$iface).$_state$3((args8991$1 as dc.dynamic), swp$BANG_8992$1, trck$BANG_8993$1, ));
 }
-return ((lcocf_alpha.IModel.extensions((v9080$1 as dc.dynamic), ) as lcocf_alpha.IModel$ext).$_state$3((v9080$1 as dc.dynamic), (args9081$1 as dc.dynamic), swp$BANG_9082$1, trck$BANG_9083$1, ));
+return ((lcocf_alpha.IModel.extensions((v8990$1 as dc.dynamic), ) as lcocf_alpha.IModel$ext).$_state$3((v8990$1 as dc.dynamic), (args8991$1 as dc.dynamic), swp$BANG_8992$1, trck$BANG_8993$1, ));
 }
 ctx$PRIME_$1=ib$1.pctx;
 continue;
@@ -536,25 +536,25 @@ return lcocf_alpha.nest$ifn((m$2101_$AUTO_$1 as dc.dynamic), );
 }
 
 dc.dynamic $_invoke$vararg(dc.dynamic $AMPERSAND_form$1, dc.dynamic $AMPERSAND_env$1, dc.dynamic form$1, dc.dynamic forms$1, ){
-final dc.dynamic vec$9112_$1=lcoc_core.reverse(lcoc_core.cons(form$1, forms$1, ), );
-final dc.dynamic o7310$1=vec$9112_$1;
-late final dc.dynamic seq$9113_$1;
+final dc.dynamic vec$9022_$1=lcoc_core.reverse(lcoc_core.cons(form$1, forms$1, ), );
+final dc.dynamic o7310$1=vec$9022_$1;
+late final dc.dynamic seq$9023_$1;
 if((o7310$1 is lcoc_core.ISeqable$iface)){
-seq$9113_$1=((o7310$1 as lcoc_core.ISeqable$iface).$_seq$0());
+seq$9023_$1=((o7310$1 as lcoc_core.ISeqable$iface).$_seq$0());
 }else{
-seq$9113_$1=((lcoc_core.ISeqable.extensions((o7310$1 as dc.dynamic), ) as lcoc_core.ISeqable$ext).$_seq$0((o7310$1 as dc.dynamic), ));
+seq$9023_$1=((lcoc_core.ISeqable.extensions((o7310$1 as dc.dynamic), ) as lcoc_core.ISeqable$ext).$_seq$0((o7310$1 as dc.dynamic), ));
 }
-final dc.dynamic first$9114_$1=lcoc_core.first(seq$9113_$1, );
-final dc.dynamic seq$9113_$2=lcoc_core.next(seq$9113_$1, );
-final dc.dynamic form$2=first$9114_$1;
-final dc.dynamic forms$2=seq$9113_$2;
+final dc.dynamic first$9024_$1=lcoc_core.first(seq$9023_$1, );
+final dc.dynamic seq$9023_$2=lcoc_core.next(seq$9023_$1, );
+final dc.dynamic form$2=first$9024_$1;
+final dc.dynamic forms$2=seq$9023_$2;
 final dc.dynamic o7310$3=(lcoc_core.concat.$_invoke$3((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2("cljd.core", "->>", )), )), (lcoc_core.list.$_invoke$1(form$2, )), lcoc_core.LazySeq(null, ((){
-dc.dynamic iter$9115_$1(dc.dynamic coll$9116_$2, ){
-dc.dynamic coll$9116_$1=coll$9116_$2;
+dc.dynamic iter$9025_$1(dc.dynamic coll$9026_$2, ){
+dc.dynamic coll$9026_$1=coll$9026_$2;
 do {
-if(((coll$9116_$1!=false)&&(coll$9116_$1!=null))){
-if(lcoc_core.chunked_seq$QMARK_(coll$9116_$1, )){
-final dc.dynamic c$8004_$AUTO_$2=lcoc_core.chunk_first(coll$9116_$1, );
+if(((coll$9026_$1!=false)&&(coll$9026_$1!=null))){
+if(lcoc_core.chunked_seq$QMARK_(coll$9026_$1, )){
+final dc.dynamic c$8004_$AUTO_$2=lcoc_core.chunk_first(coll$9026_$1, );
 final dc.dynamic coll7390$3=c$8004_$AUTO_$2;
 late final dc.int size$8005_$AUTO_$2;
 if((coll7390$3 is lcoc_core.ICounted$iface)){
@@ -575,12 +575,12 @@ form$5=((coll7481$2 as lcoc_core.IIndexed$iface).$_nth$1(n7482$2, ));
 }else{
 form$5=((lcoc_core.IIndexed.extensions((coll7481$2 as dc.dynamic), ) as lcoc_core.IIndexed$ext).$_nth$1((coll7481$2 as dc.dynamic), n7482$2, ));
 }
-final dc.dynamic G$9119_$1=form$5;
+final dc.dynamic G$9029_$1=form$5;
 late final dc.dynamic $if_$5;
 if(lcoc_core.symbol$QMARK_(form$5, )){
-$if_$5=(lcoc_core.list.$_invoke$1(G$9119_$1, ));
+$if_$5=(lcoc_core.list.$_invoke$1(G$9029_$1, ));
 }else{
-$if_$5=G$9119_$1;
+$if_$5=G$9029_$1;
 }
 final dc.List<dc.dynamic> fl$3=(dc.List<dc.dynamic>.filled(1, const lcoc_core.Keyword(null, "child", 1160621984, ), ));
 final lcoc_core.PersistentVector $8=lcoc_core.$_vec_owning(fl$3, );
@@ -613,22 +613,22 @@ return lcoc_core.chunk_cons(lcoc_core.chunk(buf$8003_$AUTO_$2, ), lcoc_core.Lazy
 if(((exit$8006_$AUTO_$2!=false)&&(exit$8006_$AUTO_$2!=null))){
 return null;
 }
-return iter$9115_$1(lcoc_core.chunk_next(coll$9116_$1, ), );
+return iter$9025_$1(lcoc_core.chunk_next(coll$9026_$1, ), );
 } as dc.dynamic), null, -1, ), );
 }
 if(((exit$8006_$AUTO_$2!=false)&&(exit$8006_$AUTO_$2!=null))){
 return null;
 }
-coll$9116_$1=lcoc_core.chunk_next(coll$9116_$1, );
+coll$9026_$1=lcoc_core.chunk_next(coll$9026_$1, );
 continue;
 }
-final dc.dynamic form$6=lcoc_core.first(coll$9116_$1, );
-final dc.dynamic G$9120_$1=form$6;
+final dc.dynamic form$6=lcoc_core.first(coll$9026_$1, );
+final dc.dynamic G$9030_$1=form$6;
 late final dc.dynamic $if_$7;
 if(lcoc_core.symbol$QMARK_(form$6, )){
-$if_$7=(lcoc_core.list.$_invoke$1(G$9120_$1, ));
+$if_$7=(lcoc_core.list.$_invoke$1(G$9030_$1, ));
 }else{
-$if_$7=G$9120_$1;
+$if_$7=G$9030_$1;
 }
 final dc.List<dc.dynamic> fl$4=(dc.List<dc.dynamic>.filled(1, const lcoc_core.Keyword(null, "child", 1160621984, ), ));
 final lcoc_core.PersistentVector $12=lcoc_core.$_vec_owning(fl$4, );
@@ -642,7 +642,7 @@ $if_$8=((lcoc_core.IMeta.extensions((o7524$4 as dc.dynamic), ) as lcoc_core.IMet
 }
 final dc.dynamic $14=lcoc_core.with_meta($13, $if_$8, );
 return lcoc_core.cons($14, lcoc_core.LazySeq(null, ((){
-return iter$9115_$1(lcoc_core.next(coll$9116_$1, ), );
+return iter$9025_$1(lcoc_core.next(coll$9026_$1, ), );
 } as dc.dynamic), null, -1, ), );
 }
 return null;
@@ -655,7 +655,7 @@ $if_$9=((o7310$2 as lcoc_core.ISeqable$iface).$_seq$0());
 }else{
 $if_$9=((lcoc_core.ISeqable.extensions((o7310$2 as dc.dynamic), ) as lcoc_core.ISeqable$ext).$_seq$0((o7310$2 as dc.dynamic), ));
 }
-return iter$9115_$1($if_$9, );
+return iter$9025_$1($if_$9, );
 } as dc.dynamic), null, -1, ), ));
 if((o7310$3 is lcoc_core.ISeqable$iface)){
 return ((o7310$3 as lcoc_core.ISeqable$iface).$_seq$0());
@@ -705,37 +705,37 @@ cast$1=(((lcoc_core.ICounted.extensions((coll7390$1 as dc.dynamic), ) as lcoc_co
 }
 final dc.int $1=(2*cast$1);
 final dc.dynamic body$1=(lcoc_core.drop.$_invoke$2($1, args$1, ));
-final dc.dynamic map$9142_$1=(lcoc_core.into.$_invoke$3(lcoc_core.$_EMPTY_MAP, (lcoc_core.map.$_invoke$1(lcoc_core.vec, )), opts$1, ));
-late final dc.dynamic map$9142_$2;
-if(((lcoc_core.ISeq.satisfies((map$9142_$1 as dc.dynamic), )) as dc.bool)){
-final dc.dynamic o7310$1=map$9142_$1;
+final dc.dynamic map$9052_$1=(lcoc_core.into.$_invoke$3(lcoc_core.$_EMPTY_MAP, (lcoc_core.map.$_invoke$1(lcoc_core.vec, )), opts$1, ));
+late final dc.dynamic map$9052_$2;
+if(((lcoc_core.ISeq.satisfies((map$9052_$1 as dc.dynamic), )) as dc.bool)){
+final dc.dynamic o7310$1=map$9052_$1;
 late final dc.dynamic $if_$1;
 if((o7310$1 is lcoc_core.ISeqable$iface)){
 $if_$1=((o7310$1 as lcoc_core.ISeqable$iface).$_seq$0());
 }else{
 $if_$1=((lcoc_core.ISeqable.extensions((o7310$1 as dc.dynamic), ) as lcoc_core.ISeqable$ext).$_seq$0((o7310$1 as dc.dynamic), ));
 }
-map$9142_$2=lcoc_core.$_map_lit($if_$1, );
+map$9052_$2=lcoc_core.$_map_lit($if_$1, );
 }else{
-map$9142_$2=map$9142_$1;
+map$9052_$2=map$9052_$1;
 }
-final dc.dynamic opts$2=map$9142_$2;
-final dc.dynamic nested_in$1=(lcoc_core.$get_.$_invoke$2(map$9142_$2, const lcoc_core.Keyword(null, "nested-in", 761490212, ), ));
-final dc.dynamic bind$1=(lcoc_core.$get_.$_invoke$2(map$9142_$2, const lcoc_core.Keyword(null, "bind", 893154113, ), ));
-final dc.dynamic inherit$1=(lcoc_core.$get_.$_invoke$2(map$9142_$2, const lcoc_core.Keyword(null, "inherit", 1823030859, ), ));
-final dc.dynamic key$1=(lcoc_core.$get_.$_invoke$2(map$9142_$2, const lcoc_core.Keyword(null, "key", 3455907201, ), ));
-final dc.dynamic ticker$1=(lcoc_core.$get_.$_invoke$2(map$9142_$2, const lcoc_core.Keyword(null, "ticker", 4005342860, ), ));
-final dc.dynamic state$1=(lcoc_core.$get_.$_invoke$2(map$9142_$2, const lcoc_core.Keyword(null, "state", 1750323599, ), ));
-final dc.dynamic tickers$1=(lcoc_core.$get_.$_invoke$2(map$9142_$2, const lcoc_core.Keyword(null, "tickers", 3884512044, ), ));
-final dc.dynamic $with_$1=(lcoc_core.$get_.$_invoke$2(map$9142_$2, const lcoc_core.Keyword(null, "with", 2004566353, ), ));
-final dc.dynamic watch$1=(lcoc_core.$get_.$_invoke$2(map$9142_$2, const lcoc_core.Keyword(null, "watch", 1211575717, ), ));
-final dc.dynamic context$1=(lcoc_core.$get_.$_invoke$2(map$9142_$2, const lcoc_core.Keyword(null, "context", 1765300105, ), ));
+final dc.dynamic opts$2=map$9052_$2;
+final dc.dynamic nested_in$1=(lcoc_core.$get_.$_invoke$2(map$9052_$2, const lcoc_core.Keyword(null, "nested-in", 761490212, ), ));
+final dc.dynamic bind$1=(lcoc_core.$get_.$_invoke$2(map$9052_$2, const lcoc_core.Keyword(null, "bind", 893154113, ), ));
+final dc.dynamic inherit$1=(lcoc_core.$get_.$_invoke$2(map$9052_$2, const lcoc_core.Keyword(null, "inherit", 1823030859, ), ));
+final dc.dynamic key$1=(lcoc_core.$get_.$_invoke$2(map$9052_$2, const lcoc_core.Keyword(null, "key", 3455907201, ), ));
+final dc.dynamic ticker$1=(lcoc_core.$get_.$_invoke$2(map$9052_$2, const lcoc_core.Keyword(null, "ticker", 4005342860, ), ));
+final dc.dynamic state$1=(lcoc_core.$get_.$_invoke$2(map$9052_$2, const lcoc_core.Keyword(null, "state", 1750323599, ), ));
+final dc.dynamic tickers$1=(lcoc_core.$get_.$_invoke$2(map$9052_$2, const lcoc_core.Keyword(null, "tickers", 3884512044, ), ));
+final dc.dynamic $with_$1=(lcoc_core.$get_.$_invoke$2(map$9052_$2, const lcoc_core.Keyword(null, "with", 2004566353, ), ));
+final dc.dynamic watch$1=(lcoc_core.$get_.$_invoke$2(map$9052_$2, const lcoc_core.Keyword(null, "watch", 1211575717, ), ));
+final dc.dynamic context$1=(lcoc_core.$get_.$_invoke$2(map$9052_$2, const lcoc_core.Keyword(null, "context", 1765300105, ), ));
 final dc.dynamic or$7228_$AUTO_$1=context$1;
 late final dc.dynamic $if_$2;
 if(((or$7228_$AUTO_$1!=false)&&(or$7228_$AUTO_$1!=null))){
 $if_$2=or$7228_$AUTO_$1;
 }else{
-$if_$2=(lcoc_core.symbol.$_invoke$2(null, "ctx__9126__auto__", ));
+$if_$2=(lcoc_core.symbol.$_invoke$2(null, "ctx__9036__auto__", ));
 }
 final dc.dynamic flutter_build_ctx$1=(lcoc_core.vary_meta.$_invoke$4($if_$2, lcoc_core.assoc, const lcoc_core.Keyword(null, "tag", 2780644040, ), (lcoc_core.symbol.$_invoke$2("\$lib:f_widgets", "BuildContext", )), ));
 final dc.dynamic or$7228_$AUTO_$2=watch$1;
@@ -770,17 +770,17 @@ key_level$1=const lcoc_core.Keyword(null, "base", 3491450116, );
 }
 }
 final dc.List<dc.dynamic> fl$1=(dc.List<dc.dynamic>.filled(2, key_level$1, ));
-final dc.dynamic G$9171_$1=key$1;
+final dc.dynamic G$9081_$1=key$1;
 late final dc.dynamic $if_$86;
 if((lcoc_core.not$EQ_.$_invoke$2(key_level$1, const lcoc_core.Keyword(null, "bind", 893154113, ), ))){
-final dc.dynamic G$9172_$1=G$9171_$1;
-if((null==(G$9172_$1 as dc.dynamic))){
+final dc.dynamic G$9082_$1=G$9081_$1;
+if((null==(G$9082_$1 as dc.dynamic))){
 $if_$86=null;
 }else{
-$if_$86=(lcoc_core.list.$_invoke$2((lcoc_core.symbol.$_invoke$2("\$lib:f_foundation", "ValueKey.", )), G$9172_$1, ));
+$if_$86=(lcoc_core.list.$_invoke$2((lcoc_core.symbol.$_invoke$2("\$lib:f_foundation", "ValueKey.", )), G$9082_$1, ));
 }
 }else{
-$if_$86=G$9171_$1;
+$if_$86=G$9081_$1;
 }
 fl$1[1]=$if_$86;
 final lcoc_core.PersistentHashMap key_exprs$1=lcoc_core.$_map_lit(fl$1, );
@@ -825,12 +825,12 @@ inherit$3=inherit$2;
 }else{
 final dc.dynamic shortcuts$1=temp$7200_$AUTO_$1;
 inherit$3=(lcoc_core.into.$_invoke$3((lcoc_core.dissoc.$_invoke$2(inherit$2, const lcoc_core.Keyword(null, "of", 2850672285, ), )), (lcoc_core.map.$_invoke$1((dc.dynamic type_or_kw$1, ){
-final dc.dynamic G$9143_$1=type_or_kw$1;
+final dc.dynamic G$9053_$1=type_or_kw$1;
 late final dc.dynamic hint$1;
 if(((lcoc_core.ISeq.satisfies((type_or_kw$1 as dc.dynamic), )) as dc.bool)){
-hint$1=lcoc_core.first(G$9143_$1, );
+hint$1=lcoc_core.first(G$9053_$1, );
 }else{
-hint$1=G$9143_$1;
+hint$1=G$9053_$1;
 }
 late final dc.dynamic $if_$7;
 if(lcoc_core.keyword$QMARK_(hint$1, )){
@@ -844,34 +844,34 @@ fl$3[1]=type_or_kw$1;
 return lcoc_core.$_vec_owning(fl$3, );
 }, )), shortcuts$1, ));
 }
-final dc.dynamic inherits_bindings$1=(lcoc_core.mapcat.$_invoke$2((dc.dynamic p$9144_$1, ){
-final dc.dynamic vec$9145_$1=p$9144_$1;
-final dc.dynamic sym$1=(lcoc_core.nth.$_invoke$3(vec$9145_$1, 0, null, ));
-final dc.dynamic type_or_kw$2=(lcoc_core.nth.$_invoke$3(vec$9145_$1, 1, null, ));
-final dc.dynamic G$9151_$1=type_or_kw$2;
+final dc.dynamic inherits_bindings$1=(lcoc_core.mapcat.$_invoke$2((dc.dynamic p$9054_$1, ){
+final dc.dynamic vec$9055_$1=p$9054_$1;
+final dc.dynamic sym$1=(lcoc_core.nth.$_invoke$3(vec$9055_$1, 0, null, ));
+final dc.dynamic type_or_kw$2=(lcoc_core.nth.$_invoke$3(vec$9055_$1, 1, null, ));
+final dc.dynamic G$9061_$1=type_or_kw$2;
 late final dc.bool $if_$8;
 if(((lcoc_core.ISeq.satisfies((type_or_kw$2 as dc.dynamic), )) as dc.bool)){
 $if_$8=false;
 }else{
 $if_$8=true;
 }
-late final dc.dynamic vec$9148_$1;
+late final dc.dynamic vec$9058_$1;
 if($if_$8){
-vec$9148_$1=(lcoc_core.list.$_invoke$1(G$9151_$1, ));
+vec$9058_$1=(lcoc_core.list.$_invoke$1(G$9061_$1, ));
 }else{
-vec$9148_$1=G$9151_$1;
+vec$9058_$1=G$9061_$1;
 }
-final dc.dynamic o7310$6=vec$9148_$1;
-late final dc.dynamic seq$9149_$1;
+final dc.dynamic o7310$6=vec$9058_$1;
+late final dc.dynamic seq$9059_$1;
 if((o7310$6 is lcoc_core.ISeqable$iface)){
-seq$9149_$1=((o7310$6 as lcoc_core.ISeqable$iface).$_seq$0());
+seq$9059_$1=((o7310$6 as lcoc_core.ISeqable$iface).$_seq$0());
 }else{
-seq$9149_$1=((lcoc_core.ISeqable.extensions(o7310$6, ) as lcoc_core.ISeqable$ext).$_seq$0(o7310$6, ));
+seq$9059_$1=((lcoc_core.ISeqable.extensions(o7310$6, ) as lcoc_core.ISeqable$ext).$_seq$0(o7310$6, ));
 }
-final dc.dynamic first$9150_$1=lcoc_core.first(seq$9149_$1, );
-final dc.dynamic seq$9149_$2=lcoc_core.next(seq$9149_$1, );
-final dc.dynamic type_or_kw$3=first$9150_$1;
-final dc.dynamic args$2=seq$9149_$2;
+final dc.dynamic first$9060_$1=lcoc_core.first(seq$9059_$1, );
+final dc.dynamic seq$9059_$2=lcoc_core.next(seq$9059_$1, );
+final dc.dynamic type_or_kw$3=first$9060_$1;
+final dc.dynamic args$2=seq$9059_$2;
 final dc.List<dc.dynamic> fl$4=(dc.List<dc.dynamic>.filled(2, sym$1, ));
 late final dc.dynamic $if_$10;
 if(lcoc_core.keyword$QMARK_(type_or_kw$3, )){
@@ -902,11 +902,11 @@ $if_$10=(lcoc_core.list$STAR_.$_invoke$3($5, flutter_build_ctx$1, args$2, ));
 fl$4[1]=$if_$10;
 return lcoc_core.$_vec_owning(fl$4, );
 }, inherit$3, ));
-final dc.dynamic init_let_bindings$1=(lcoc_core.into.$_invoke$3(lcoc_core.$_EMPTY_VECTOR, (lcoc_core.mapcat.$_invoke$1((dc.dynamic p$9152_$1, ){
-final dc.dynamic vec$9153_$1=p$9152_$1;
-final dc.dynamic lhs$1=(lcoc_core.nth.$_invoke$3(vec$9153_$1, 0, null, ));
-final dc.dynamic rhs$1=(lcoc_core.nth.$_invoke$3(vec$9153_$1, 1, null, ));
-final dc.dynamic binding$1=vec$9153_$1;
+final dc.dynamic init_let_bindings$1=(lcoc_core.into.$_invoke$3(lcoc_core.$_EMPTY_VECTOR, (lcoc_core.mapcat.$_invoke$1((dc.dynamic p$9062_$1, ){
+final dc.dynamic vec$9063_$1=p$9062_$1;
+final dc.dynamic lhs$1=(lcoc_core.nth.$_invoke$3(vec$9063_$1, 0, null, ));
+final dc.dynamic rhs$1=(lcoc_core.nth.$_invoke$3(vec$9063_$1, 1, null, ));
+final dc.dynamic binding$1=vec$9063_$1;
 final dc.dynamic o7533$1=lhs$1;
 late final dc.int hash$1;
 if((o7533$1 is lcoc_core.IHash$iface)){
@@ -930,13 +930,13 @@ return binding$1;
 }
 }, )), (lcoc_core.partition.$_invoke$2(2, $with_$1, )), ));
 final dc.dynamic coll7370$1=lcoc_core.reverse((lcoc_core.partition.$_invoke$2(2, $with_$1, )), );
-dc.dynamic f7371$1(dc.dynamic p$9156_$1, dc.dynamic p$9157_$1, ){
-final dc.dynamic vec$9158_$1=p$9156_$1;
-final dc.dynamic dispose$1=(lcoc_core.nth.$_invoke$3(vec$9158_$1, 0, null, ));
-final dc.dynamic stmts$1=(lcoc_core.nth.$_invoke$3(vec$9158_$1, 1, null, ));
-final dc.dynamic vec$9161_$1=p$9157_$1;
-final dc.dynamic lhs$2=(lcoc_core.nth.$_invoke$3(vec$9161_$1, 0, null, ));
-final dc.dynamic rhs$2=(lcoc_core.nth.$_invoke$3(vec$9161_$1, 1, null, ));
+dc.dynamic f7371$1(dc.dynamic p$9066_$1, dc.dynamic p$9067_$1, ){
+final dc.dynamic vec$9068_$1=p$9066_$1;
+final dc.dynamic dispose$1=(lcoc_core.nth.$_invoke$3(vec$9068_$1, 0, null, ));
+final dc.dynamic stmts$1=(lcoc_core.nth.$_invoke$3(vec$9068_$1, 1, null, ));
+final dc.dynamic vec$9071_$1=p$9067_$1;
+final dc.dynamic lhs$2=(lcoc_core.nth.$_invoke$3(vec$9071_$1, 0, null, ));
+final dc.dynamic rhs$2=(lcoc_core.nth.$_invoke$3(vec$9071_$1, 1, null, ));
 final dc.dynamic o7533$2=lhs$2;
 late final dc.int hash$2;
 if((o7533$2 is lcoc_core.IHash$iface)){
@@ -999,8 +999,8 @@ $if_$13=((coll7370$1 as lcoc_core.IReduce$iface).$_reduce$2(f7371$1, start7372$1
 $if_$13=((lcoc_core.IReduce.extensions((coll7370$1 as dc.dynamic), ) as lcoc_core.IReduce$ext).$_reduce$2((coll7370$1 as dc.dynamic), f7371$1, start7372$1, ));
 }
 final dc.dynamic dispose_statements$1=lcoc_core.second($if_$13, );
-final dc.dynamic build$PLUS_dispose$1=(lcoc_core.symbol.$_invoke$2(null, "build+dispose__9127__auto__", ));
-final dc.dynamic arg$5=(lcoc_core.symbol.$_invoke$2(null, "state__9128__auto__", ));
+final dc.dynamic build$PLUS_dispose$1=(lcoc_core.symbol.$_invoke$2(null, "build+dispose__9037__auto__", ));
+final dc.dynamic arg$5=(lcoc_core.symbol.$_invoke$2(null, "state__9038__auto__", ));
 final dc.dynamic o7310$9=(lcoc_core.concat.$_invoke$2((lcoc_core.list.$_invoke$1(const lcoc_core.Keyword(null, "tag", 2780644040, ), )), (lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2("\$lib:f_widgets", "State", )), )), ));
 late final dc.dynamic $if_$14;
 if((o7310$9 is lcoc_core.ISeqable$iface)){
@@ -1010,7 +1010,7 @@ $if_$14=((lcoc_core.ISeqable.extensions((o7310$9 as dc.dynamic), ) as lcoc_core.
 }
 final dc.dynamic $7=(lcoc_core.apply.$_invoke$2(lcoc_core.hash_map, $if_$14, ));
 final dc.dynamic state_sym$1=lcoc_core.with_meta(arg$5, $7, );
-final dc.dynamic super_sym$1=(lcoc_core.symbol.$_invoke$2(null, "super__9129__auto__", ));
+final dc.dynamic super_sym$1=(lcoc_core.symbol.$_invoke$2(null, "super__9039__auto__", ));
 final dc.dynamic arg$6=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2("cljd.core", "let", )), ));
 final dc.dynamic o7310$10=(lcoc_core.concat.$_invoke$1(inherits_bindings$1, ));
 late final dc.dynamic $if_$15;
@@ -1061,7 +1061,7 @@ final dc.dynamic $65=(lcoc_core.list.$_invoke$1($if_$17, ));
 final dc.dynamic arg$40=(lcoc_core.list.$_invoke$1(const lcoc_core.Keyword(null, "no-meta", 2746638389, ), ));
 final dc.dynamic arg$39=(lcoc_core.list.$_invoke$1(true, ));
 final dc.dynamic arg$15=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "debugFillProperties", )), ));
-final dc.dynamic o7310$14=(lcoc_core.concat.$_invoke$2((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "this__9134__auto__", )), )), (lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "props-builder__9135__auto__", )), )), ));
+final dc.dynamic o7310$14=(lcoc_core.concat.$_invoke$2((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "this__9044__auto__", )), )), (lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "props-builder__9045__auto__", )), )), ));
 late final dc.dynamic $if_$18;
 if((o7310$14 is lcoc_core.ISeqable$iface)){
 $if_$18=((o7310$14 as lcoc_core.ISeqable$iface).$_seq$0());
@@ -1071,7 +1071,7 @@ $if_$18=((lcoc_core.ISeqable.extensions((o7310$14 as dc.dynamic), ) as lcoc_core
 final dc.dynamic $10=(lcoc_core.apply.$_invoke$2(lcoc_core.vector, $if_$18, ));
 final dc.dynamic $19=(lcoc_core.list.$_invoke$1($10, ));
 final dc.dynamic arg$8=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, ".debugFillProperties", )), ));
-final dc.dynamic arg$7=(lcoc_core.symbol.$_invoke$2(null, "this__9134__auto__", ));
+final dc.dynamic arg$7=(lcoc_core.symbol.$_invoke$2(null, "this__9044__auto__", ));
 final dc.dynamic o7310$15=(lcoc_core.concat.$_invoke$2((lcoc_core.list.$_invoke$1(const lcoc_core.Keyword(null, "tag", 2780644040, ), )), (lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "super", )), )), ));
 late final dc.dynamic $if_$19;
 if((o7310$15 is lcoc_core.ISeqable$iface)){
@@ -1082,7 +1082,7 @@ $if_$19=((lcoc_core.ISeqable.extensions((o7310$15 as dc.dynamic), ) as lcoc_core
 final dc.dynamic $11=(lcoc_core.apply.$_invoke$2(lcoc_core.hash_map, $if_$19, ));
 final dc.dynamic $12=lcoc_core.with_meta(arg$7, $11, );
 final dc.dynamic $13=(lcoc_core.list.$_invoke$1($12, ));
-final dc.dynamic o7310$16=(lcoc_core.concat.$_invoke$3(arg$8, $13, (lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "props-builder__9135__auto__", )), )), ));
+final dc.dynamic o7310$16=(lcoc_core.concat.$_invoke$3(arg$8, $13, (lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "props-builder__9045__auto__", )), )), ));
 late final dc.dynamic $if_$20;
 if((o7310$16 is lcoc_core.ISeqable$iface)){
 $if_$20=((o7310$16 as lcoc_core.ISeqable$iface).$_seq$0());
@@ -1091,11 +1091,11 @@ $if_$20=((lcoc_core.ISeqable.extensions((o7310$16 as dc.dynamic), ) as lcoc_core
 }
 final dc.dynamic $18=(lcoc_core.list.$_invoke$1($if_$20, ));
 final dc.dynamic arg$14=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2("cljd.core", "doto", )), ));
-final dc.dynamic arg$13=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "props-builder__9135__auto__", )), ));
-final lcoc_core.PersistentVector G$9165_$1=lcoc_core.$_EMPTY_VECTOR;
+final dc.dynamic arg$13=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "props-builder__9045__auto__", )), ));
+final lcoc_core.PersistentVector G$9075_$1=lcoc_core.$_EMPTY_VECTOR;
 late final dc.dynamic $if_$24;
 if(((watch$2!=false)&&(watch$2!=null))){
-final lcoc_core.PersistentVector coll7355$2=G$9165_$1;
+final lcoc_core.PersistentVector coll7355$2=G$9075_$1;
 final dc.dynamic arg$12=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, ".add", )), ));
 final dc.dynamic arg$11=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2("\$lib:f_foundation", "MessageProperty", )), ));
 final dc.dynamic arg$10=(lcoc_core.list.$_invoke$1("atom", ));
@@ -1133,7 +1133,7 @@ o7356$2=((lcoc_core.ISeqable.extensions((o7310$20 as dc.dynamic), ) as lcoc_core
 }
 $if_$24=(coll7355$2.$_conj$1(o7356$2, ));
 }else{
-$if_$24=G$9165_$1;
+$if_$24=G$9075_$1;
 }
 final dc.dynamic o7310$21=(lcoc_core.concat.$_invoke$3(arg$14, arg$13, $if_$24, ));
 late final dc.dynamic $if_$25;
@@ -1152,7 +1152,7 @@ $if_$26=((lcoc_core.ISeqable.extensions((o7310$22 as dc.dynamic), ) as lcoc_core
 }
 final dc.dynamic $64=(lcoc_core.list.$_invoke$1($if_$26, ));
 final dc.dynamic arg$38=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "createState", )), ));
-final dc.dynamic o7310$23=(lcoc_core.concat.$_invoke$1((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "___9136__auto__", )), )), ));
+final dc.dynamic o7310$23=(lcoc_core.concat.$_invoke$1((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "___9046__auto__", )), )), ));
 late final dc.dynamic $if_$27;
 if((o7310$23 is lcoc_core.ISeqable$iface)){
 $if_$27=((o7310$23 as lcoc_core.ISeqable$iface).$_seq$0());
@@ -1298,7 +1298,7 @@ final dc.dynamic arg$27=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(
 final dc.dynamic arg$26=(lcoc_core.list.$_invoke$1(watch$2, ));
 final dc.dynamic arg$25=(lcoc_core.list.$_invoke$1(state_sym$1, ));
 final dc.dynamic arg$24=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2("cljd.core", "fn", )), ));
-final dc.dynamic o7310$36=(lcoc_core.concat.$_invoke$4((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "k__9130__auto__", )), )), (lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "r__9131__auto__", )), )), (lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "o__9132__auto__", )), )), (lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "n__9133__auto__", )), )), ));
+final dc.dynamic o7310$36=(lcoc_core.concat.$_invoke$4((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "k__9040__auto__", )), )), (lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "r__9041__auto__", )), )), (lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "o__9042__auto__", )), )), (lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "n__9043__auto__", )), )), ));
 late final dc.dynamic $if_$42;
 if((o7310$36 is lcoc_core.ISeqable$iface)){
 $if_$42=((o7310$36 as lcoc_core.ISeqable$iface).$_seq$0());
@@ -1513,13 +1513,13 @@ $if_$65=((lcoc_core.ISeqable.extensions((o7310$58 as dc.dynamic), ) as lcoc_core
 }
 final dc.dynamic $63=(lcoc_core.list.$_invoke$1($if_$65, ));
 final dc.dynamic o7310$59=(lcoc_core.concat.$_invoke$7(arg$42, arg$41, $65, arg$40, arg$39, $64, $63, ));
-late final dc.dynamic G$9164_$1;
+late final dc.dynamic G$9074_$1;
 if((o7310$59 is lcoc_core.ISeqable$iface)){
-G$9164_$1=((o7310$59 as lcoc_core.ISeqable$iface).$_seq$0());
+G$9074_$1=((o7310$59 as lcoc_core.ISeqable$iface).$_seq$0());
 }else{
-G$9164_$1=((lcoc_core.ISeqable.extensions((o7310$59 as dc.dynamic), ) as lcoc_core.ISeqable$ext).$_seq$0((o7310$59 as dc.dynamic), ));
+G$9074_$1=((lcoc_core.ISeqable.extensions((o7310$59 as dc.dynamic), ) as lcoc_core.ISeqable$ext).$_seq$0((o7310$59 as dc.dynamic), ));
 }
-late final dc.dynamic G$9164_$2;
+late final dc.dynamic G$9074_$2;
 if(((state$1!=false)&&(state$1!=null))){
 final dc.dynamic arg$43=(lcoc_core.symbol.$_invoke$2("cljd.core", "let", ));
 final dc.List<dc.dynamic> fl$11=(dc.List<dc.dynamic>.filled(2, lcoc_core.first(state$1, ), ));
@@ -1532,9 +1532,9 @@ $if_$66=((lcoc_core.ISeqable.extensions((o7310$60 as dc.dynamic), ) as lcoc_core
 }
 fl$11[1]=$if_$66;
 final lcoc_core.PersistentVector $66=lcoc_core.$_vec_owning(fl$11, );
-G$9164_$2=(lcoc_core.list.$_invoke$3(arg$43, $66, G$9164_$1, ));
+G$9074_$2=(lcoc_core.list.$_invoke$3(arg$43, $66, G$9074_$1, ));
 }else{
-G$9164_$2=G$9164_$1;
+G$9074_$2=G$9074_$1;
 }
 final dc.dynamic o7310$61=$with_$1;
 late final dc.dynamic $if_$67;
@@ -1555,9 +1555,9 @@ $if_$68=((lcoc_core.ISeqable.extensions((o7310$62 as dc.dynamic), ) as lcoc_core
 }
 fl$12[1]=$if_$68;
 final lcoc_core.PersistentVector $67=lcoc_core.$_vec_owning(fl$12, );
-user_widget$1=(lcoc_core.list.$_invoke$3(arg$44, $67, G$9164_$2, ));
+user_widget$1=(lcoc_core.list.$_invoke$3(arg$44, $67, G$9074_$2, ));
 }else{
-user_widget$1=G$9164_$2;
+user_widget$1=G$9074_$2;
 }
 }else{
 final dc.dynamic arg$47=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2("cljd.core", "reify", )), ));
@@ -1571,7 +1571,7 @@ $if_$69=((lcoc_core.ISeqable.extensions((o7310$63 as dc.dynamic), ) as lcoc_core
 }
 final dc.dynamic $71=(lcoc_core.list.$_invoke$1($if_$69, ));
 final dc.dynamic arg$45=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "build", )), ));
-final dc.dynamic o7310$64=(lcoc_core.concat.$_invoke$2((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "___9137__auto__", )), )), (lcoc_core.list.$_invoke$1(flutter_build_ctx$1, )), ));
+final dc.dynamic o7310$64=(lcoc_core.concat.$_invoke$2((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "___9047__auto__", )), )), (lcoc_core.list.$_invoke$1(flutter_build_ctx$1, )), ));
 late final dc.dynamic $if_$70;
 if((o7310$64 is lcoc_core.ISeqable$iface)){
 $if_$70=((o7310$64 as lcoc_core.ISeqable$iface).$_seq$0());
@@ -1606,18 +1606,18 @@ late final dc.dynamic user_widget$2;
 if((null==temp$7200_$AUTO_$3)){
 user_widget$2=user_widget$1;
 }else{
-final dc.dynamic vec$9166_$1=temp$7200_$AUTO_$3;
-final dc.dynamic o7310$68=vec$9166_$1;
-late final dc.dynamic seq$9167_$1;
+final dc.dynamic vec$9076_$1=temp$7200_$AUTO_$3;
+final dc.dynamic o7310$68=vec$9076_$1;
+late final dc.dynamic seq$9077_$1;
 if((o7310$68 is lcoc_core.ISeqable$iface)){
-seq$9167_$1=((o7310$68 as lcoc_core.ISeqable$iface).$_seq$0());
+seq$9077_$1=((o7310$68 as lcoc_core.ISeqable$iface).$_seq$0());
 }else{
-seq$9167_$1=((lcoc_core.ISeqable.extensions(o7310$68, ) as lcoc_core.ISeqable$ext).$_seq$0(o7310$68, ));
+seq$9077_$1=((lcoc_core.ISeqable.extensions(o7310$68, ) as lcoc_core.ISeqable$ext).$_seq$0(o7310$68, ));
 }
-final dc.dynamic first$9168_$1=lcoc_core.first(seq$9167_$1, );
-final dc.dynamic seq$9167_$2=lcoc_core.next(seq$9167_$1, );
-final dc.dynamic top$1=first$9168_$1;
-final dc.dynamic others$1=seq$9167_$2;
+final dc.dynamic first$9078_$1=lcoc_core.first(seq$9077_$1, );
+final dc.dynamic seq$9077_$2=lcoc_core.next(seq$9077_$1, );
+final dc.dynamic top$1=first$9078_$1;
+final dc.dynamic others$1=seq$9077_$2;
 final dc.dynamic arg$48=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2("cljd.flutter.alpha", "nest", )), ));
 late final dc.dynamic $if_$72;
 if(((lcoc_core.ISeq.satisfies((top$1 as dc.dynamic), )) as dc.bool)){
@@ -1649,7 +1649,7 @@ $if_$74=((lcoc_core.ISeqable.extensions((o7310$71 as dc.dynamic), ) as lcoc_core
 }
 if((($if_$74!=false)&&($if_$74!=null))){
 final dc.dynamic arg$58=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2("cljd.core", "let", )), ));
-final dc.dynamic o7310$72=(lcoc_core.concat.$_invoke$2((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "user-widget__9138__auto__", )), )), (lcoc_core.list.$_invoke$1(user_widget$2, )), ));
+final dc.dynamic o7310$72=(lcoc_core.concat.$_invoke$2((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "user-widget__9048__auto__", )), )), (lcoc_core.list.$_invoke$1(user_widget$2, )), ));
 late final dc.dynamic $if_$75;
 if((o7310$72 is lcoc_core.ISeqable$iface)){
 $if_$75=((o7310$72 as lcoc_core.ISeqable$iface).$_seq$0());
@@ -1662,13 +1662,13 @@ final dc.dynamic arg$57=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(
 final dc.dynamic arg$56=(lcoc_core.list.$_invoke$1(const lcoc_core.Keyword(null, "key", 3455907201, ), ));
 final dc.dynamic arg$55=(lcoc_core.list.$_invoke$1((const lcoc_core.Keyword(null, "bind", 893154113, ).$_invoke$1(key_exprs$1, )), ));
 final dc.dynamic arg$54=(lcoc_core.list.$_invoke$1(const lcoc_core.Keyword(null, "state", 1750323599, ), ));
-final dc.dynamic o7310$78=(lcoc_core.concat.$_invoke$2((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "bindings__9139__auto__", )), )), (lcoc_core.list.$_invoke$1(lcoc_core.zipmap(lcoc_core.keys(bind$1, ), lcoc_core.LazySeq(null, ((){
-dc.dynamic iter$9169_$1(dc.dynamic coll$9170_$2, ){
-dc.dynamic coll$9170_$1=coll$9170_$2;
+final dc.dynamic o7310$78=(lcoc_core.concat.$_invoke$2((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "bindings__9049__auto__", )), )), (lcoc_core.list.$_invoke$1(lcoc_core.zipmap(lcoc_core.keys(bind$1, ), lcoc_core.LazySeq(null, ((){
+dc.dynamic iter$9079_$1(dc.dynamic coll$9080_$2, ){
+dc.dynamic coll$9080_$1=coll$9080_$2;
 do {
-if(((coll$9170_$1!=false)&&(coll$9170_$1!=null))){
-if(lcoc_core.chunked_seq$QMARK_(coll$9170_$1, )){
-final dc.dynamic c$8004_$AUTO_$2=lcoc_core.chunk_first(coll$9170_$1, );
+if(((coll$9080_$1!=false)&&(coll$9080_$1!=null))){
+if(lcoc_core.chunked_seq$QMARK_(coll$9080_$1, )){
+final dc.dynamic c$8004_$AUTO_$2=lcoc_core.chunk_first(coll$9080_$1, );
 final dc.dynamic coll7390$4=c$8004_$AUTO_$2;
 late final dc.int size$8005_$AUTO_$2;
 if((coll7390$4 is lcoc_core.ICounted$iface)){
@@ -1716,16 +1716,16 @@ return lcoc_core.chunk_cons(lcoc_core.chunk(buf$8003_$AUTO_$2, ), lcoc_core.Lazy
 if(((exit$8006_$AUTO_$2!=false)&&(exit$8006_$AUTO_$2!=null))){
 return null;
 }
-return iter$9169_$1(lcoc_core.chunk_next(coll$9170_$1, ), );
+return iter$9079_$1(lcoc_core.chunk_next(coll$9080_$1, ), );
 } as dc.dynamic), null, -1, ), );
 }
 if(((exit$8006_$AUTO_$2!=false)&&(exit$8006_$AUTO_$2!=null))){
 return null;
 }
-coll$9170_$1=lcoc_core.chunk_next(coll$9170_$1, );
+coll$9080_$1=lcoc_core.chunk_next(coll$9080_$1, );
 continue;
 }
-final dc.dynamic v$4=lcoc_core.first(coll$9170_$1, );
+final dc.dynamic v$4=lcoc_core.first(coll$9080_$1, );
 final dc.dynamic o7310$76=(lcoc_core.concat.$_invoke$2((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2("cljd.flutter.alpha", "ensure-model", )), )), (lcoc_core.list.$_invoke$1(v$4, )), ));
 late final dc.dynamic $if_$79;
 if((o7310$76 is lcoc_core.ISeqable$iface)){
@@ -1734,7 +1734,7 @@ $if_$79=((o7310$76 as lcoc_core.ISeqable$iface).$_seq$0());
 $if_$79=((lcoc_core.ISeqable.extensions((o7310$76 as dc.dynamic), ) as lcoc_core.ISeqable$ext).$_seq$0((o7310$76 as dc.dynamic), ));
 }
 return lcoc_core.cons($if_$79, lcoc_core.LazySeq(null, ((){
-return iter$9169_$1(lcoc_core.next(coll$9170_$1, ), );
+return iter$9079_$1(lcoc_core.next(coll$9080_$1, ), );
 } as dc.dynamic), null, -1, ), );
 }
 return null;
@@ -1747,7 +1747,7 @@ $if_$80=((o7310$77 as lcoc_core.ISeqable$iface).$_seq$0());
 }else{
 $if_$80=((lcoc_core.ISeqable.extensions((o7310$77 as dc.dynamic), ) as lcoc_core.ISeqable$ext).$_seq$0((o7310$77 as dc.dynamic), ));
 }
-return iter$9169_$1($if_$80, );
+return iter$9079_$1($if_$80, );
 } as dc.dynamic), null, -1, ), ), )), ));
 late final dc.dynamic $if_$81;
 if((o7310$78 is lcoc_core.ISeqable$iface)){
@@ -1758,11 +1758,11 @@ $if_$81=((lcoc_core.ISeqable.extensions((o7310$78 as dc.dynamic), ) as lcoc_core
 final dc.dynamic $76=(lcoc_core.apply.$_invoke$2(lcoc_core.vector, $if_$81, ));
 final dc.dynamic $80=(lcoc_core.list.$_invoke$1($76, ));
 final dc.dynamic arg$53=(lcoc_core.list.$_invoke$1(const lcoc_core.Keyword(null, "context", 1765300105, ), ));
-final dc.dynamic arg$52=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "pctx__9140__auto__", )), ));
+final dc.dynamic arg$52=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "pctx__9050__auto__", )), ));
 final dc.dynamic arg$51=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2("cljd.flutter.alpha", "InheritedBindings.", )), ));
-final dc.dynamic arg$50=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "bindings__9139__auto__", )), ));
-final dc.dynamic arg$49=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "pctx__9140__auto__", )), ));
-final dc.dynamic o7310$79=(lcoc_core.concat.$_invoke$2((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2("clojure.core", "deref", )), )), (lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "bindings__9139__auto__", )), )), ));
+final dc.dynamic arg$50=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "bindings__9049__auto__", )), ));
+final dc.dynamic arg$49=(lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "pctx__9050__auto__", )), ));
+final dc.dynamic o7310$79=(lcoc_core.concat.$_invoke$2((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2("clojure.core", "deref", )), )), (lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "bindings__9049__auto__", )), )), ));
 late final dc.dynamic $if_$82;
 if((o7310$79 is lcoc_core.ISeqable$iface)){
 $if_$82=((o7310$79 as lcoc_core.ISeqable$iface).$_seq$0());
@@ -1770,7 +1770,7 @@ $if_$82=((o7310$79 as lcoc_core.ISeqable$iface).$_seq$0());
 $if_$82=((lcoc_core.ISeqable.extensions((o7310$79 as dc.dynamic), ) as lcoc_core.ISeqable$ext).$_seq$0((o7310$79 as dc.dynamic), ));
 }
 final dc.dynamic $78=(lcoc_core.list.$_invoke$1($if_$82, ));
-final dc.dynamic o7310$80=(lcoc_core.concat.$_invoke$2((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2("cljd.core", "->>", )), )), (lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "user-widget__9138__auto__", )), )), ));
+final dc.dynamic o7310$80=(lcoc_core.concat.$_invoke$2((lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2("cljd.core", "->>", )), )), (lcoc_core.list.$_invoke$1((lcoc_core.symbol.$_invoke$2(null, "user-widget__9048__auto__", )), )), ));
 late final dc.dynamic $if_$83;
 if((o7310$80 is lcoc_core.ISeqable$iface)){
 $if_$83=((o7310$80 as lcoc_core.ISeqable$iface).$_seq$0());

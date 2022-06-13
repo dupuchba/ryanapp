@@ -43,21 +43,21 @@ return ((s$1 as dc.String).endsWith((substr$1 as dc.String), ));
 dc.String escape(dc.dynamic s$1, dc.dynamic cmap$1, ){
 final dc.StringBuffer sb$1=dc.StringBuffer();
 final dc.String coll7370$1=(s$1 as dc.String);
-void f7371$1(dc.dynamic p1$8955_$SHARP_$1, dc.dynamic p2$8954_$SHARP_$1, ){
+void f7371$1(dc.dynamic p1$8865_$SHARP_$1, dc.dynamic p2$8864_$SHARP_$1, ){
 late final dc.dynamic temp$7210_$AUTO_$1;
 if((cmap$1 is dc.Function)){
-temp$7210_$AUTO_$1=(cmap$1 as dc.Function)(p2$8954_$SHARP_$1, );
+temp$7210_$AUTO_$1=(cmap$1 as dc.Function)(p2$8864_$SHARP_$1, );
 }else if((cmap$1 is lcoc_core.IFn$iface)){
-temp$7210_$AUTO_$1=((cmap$1 as lcoc_core.IFn$iface).$_invoke$1(p2$8954_$SHARP_$1, ));
+temp$7210_$AUTO_$1=((cmap$1 as lcoc_core.IFn$iface).$_invoke$1(p2$8864_$SHARP_$1, ));
 }else{
-temp$7210_$AUTO_$1=(lcoc_core.IFn.extensions(cmap$1, ).$_invoke$1(cmap$1, p2$8954_$SHARP_$1, ));
+temp$7210_$AUTO_$1=(lcoc_core.IFn.extensions(cmap$1, ).$_invoke$1(cmap$1, p2$8864_$SHARP_$1, ));
 }
 late final dc.dynamic $if_$1;
 if(((temp$7210_$AUTO_$1!=false)&&(temp$7210_$AUTO_$1!=null))){
 final dc.dynamic replacement$1=temp$7210_$AUTO_$1;
 $if_$1=(lcoc_core.str.$_invoke$1(replacement$1, ));
 }else{
-$if_$1=p2$8954_$SHARP_$1;
+$if_$1=p2$8864_$SHARP_$1;
 }
 return (sb$1.write($if_$1, ));
 }
@@ -321,12 +321,12 @@ return lcoc_core.peek(vs$1, );
 return (dc.dynamic m$1, ){
 final dc.StringBuffer sb$1=dc.StringBuffer();
 final dc.dynamic coll7370$1=vs$1;
-void f7371$1(dc.dynamic p1$8946_$SHARP_$1, dc.dynamic p2$8945_$SHARP_$1, ){
+void f7371$1(dc.dynamic p1$8856_$SHARP_$1, dc.dynamic p2$8855_$SHARP_$1, ){
 late final dc.dynamic $if_$2;
-if((p2$8945_$SHARP_$1 is dc.String)){
-$if_$2=p2$8945_$SHARP_$1;
+if((p2$8855_$SHARP_$1 is dc.String)){
+$if_$2=p2$8855_$SHARP_$1;
 }else{
-$if_$2=((m$1 as dc.Match).group((p2$8945_$SHARP_$1 as dc.int), ));
+$if_$2=((m$1 as dc.Match).group((p2$8855_$SHARP_$1 as dc.int), ));
 }
 return (sb$1.write($if_$2, ));
 }
@@ -437,18 +437,18 @@ final dc.dynamic temp$7200_$AUTO_$1=matches$1;
 if((null==(temp$7200_$AUTO_$1 as dc.dynamic))){
 return lcoc_core.persistent$BANG_((lcoc_core.conj$BANG_.$_invoke$2(v$1, (lcoc_core.subs.$_invoke$2(s$4, i$1, )), )), );
 }
-final dc.dynamic vec$8951_$1=temp$7200_$AUTO_$1;
-final dc.dynamic o7310$2=vec$8951_$1;
-late final dc.dynamic seq$8952_$1;
+final dc.dynamic vec$8861_$1=temp$7200_$AUTO_$1;
+final dc.dynamic o7310$2=vec$8861_$1;
+late final dc.dynamic seq$8862_$1;
 if((o7310$2 is lcoc_core.ISeqable$iface)){
-seq$8952_$1=((o7310$2 as lcoc_core.ISeqable$iface).$_seq$0());
+seq$8862_$1=((o7310$2 as lcoc_core.ISeqable$iface).$_seq$0());
 }else{
-seq$8952_$1=((lcoc_core.ISeqable.extensions((o7310$2 as dc.dynamic), ) as lcoc_core.ISeqable$ext).$_seq$0((o7310$2 as dc.dynamic), ));
+seq$8862_$1=((lcoc_core.ISeqable.extensions((o7310$2 as dc.dynamic), ) as lcoc_core.ISeqable$ext).$_seq$0((o7310$2 as dc.dynamic), ));
 }
-final dc.dynamic first$8953_$1=lcoc_core.first(seq$8952_$1, );
-final dc.dynamic seq$8952_$2=lcoc_core.next(seq$8952_$1, );
-final dc.Match m$1=(first$8953_$1 as dc.Match);
-final dc.dynamic matches$2=seq$8952_$2;
+final dc.dynamic first$8863_$1=lcoc_core.first(seq$8862_$1, );
+final dc.dynamic seq$8862_$2=lcoc_core.next(seq$8862_$1, );
+final dc.Match m$1=(first$8863_$1 as dc.Match);
+final dc.dynamic matches$2=seq$8862_$2;
 v$1=(lcoc_core.conj$BANG_.$_invoke$2(v$1, (lcoc_core.subs.$_invoke$3(s$4, i$1, m$1.start, )), ));
 i$1=m$1.end;
 matches$1=matches$2;
