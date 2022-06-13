@@ -12,13 +12,14 @@
 (defn ^String formatted-date-from-epoch [^int date-time]
   (formatted-date (DateTime/fromMillisecondsSinceEpoch (* 1000 date-time))))
 
-;; ui/app_colors.dart
+;; color utils
 (def primary-color (m/Color 0xff006837))
 (def primary-dark-color (m/Color 0xff004012))
 (def secondary-color (m/Color 0xffEFEFEF))
 (def accent-color (m/Color 0xffBA5A31))
 (def black m.Colors/black54)
 
+;; initial data
 (def initial-todos
   [{:id 0 :text "Do Nothing" :dueDate (.now DateTime) :priority 3 :is-done false}
    {:id 1 :text "Get back to 1985" :dueDate (-> DateTime (.now) (.add (Duration :hours 5))) :priority 5 :is-done false}
@@ -29,6 +30,7 @@
    {:id 6 :text "World Peace" :dueDate (-> DateTime (.now) (.add (Duration :days 5))) :priority 2 :is-done false}
    {:id 7 :text "Become a teacher. Make a test where every answer is ?C?." :dueDate (-> DateTime (.now) (.add (Duration :days 6))) :priority 1 :is-done false}])
 
+;; fetch-todos can sometimes fail
 (defn ^a/Future fetch-todos []
   (a.Future/delayed (Duration :seconds 4)
     (fn []
@@ -37,31 +39,22 @@
           initial-todos
           (throw (Exception "Error while fetching todos")))))))
 
-;; ui/_shared/progress_widget.dart
-(def progress-widget
-  (f/nest
-    m/Center
-    (m/CircularProgressIndicator :valueColor (m/AlwaysStoppedAnimation (.green m/Colors)))))
 
-(def app-bar
-  (m/AppBar
-    :centerTitle true
-    :title
-    (f/widget
-      :inherit [m/Theme]
-      (m/Text "The Morning App"
-        :style (-> theme .-textTheme .headline6 (.copyWith :color (.white m/Colors) :fontSize 24))))))
 
-(def bottom-navigation-bar
-  (m/BottomNavigationBar
-    :currentIndex 0
-    :onTap (fn [index] nil)
-    :items [(m/BottomNavigationBarItem
-              :icon (m/Icon (.today_outlined m/Icons))
-              :label "Todos")
-            (m/BottomNavigationBarItem
-              :icon (m/Icon (.article m/Icons))
-              :label "News")]))
+(defn on-reorder [app-state]
+  (fn [old-idx new-idx]
+    (swap! app-state
+      (fn [s]
+        (let [todos (:todos s)]
+          (if (< new-idx old-idx)
+            (let [p1 (conj (subvec todos 0 new-idx) (nth todos old-idx))
+                  p2 (subvec todos new-idx old-idx)
+                  p3 (subvec todos (inc old-idx))]
+              (assoc s :todos (into p1 (concat p2 p3))))
+            (let [p1 (subvec todos 0 old-idx)
+                  p2 (conj (subvec todos (inc old-idx) new-idx) (nth todos old-idx))
+                  p3 (subvec todos new-idx)]
+              (assoc s :todos (into p1 (concat p2 p3))))))))))
 
 (defn todo-item [idx todo-id]
   (f/widget
@@ -105,7 +98,11 @@
                         :onPressed (fn [] (swap! app-state (fn [s] (assoc-in s [:todos idx :is-done] (not is-done)))) nil)
                         :icon (m/Icon (if is-done m.Icons/close_sharp m.Icons/check_sharp))
                         :iconSize 25))
-                    (m/Icon m.Icons/arrow_upward_rounded :size 25 :color priority-icon-color)
+                    (m/IconButton
+                      :onPressed (when-not (zero? idx)
+                                   (fn [] ((on-reorder app-state) idx (dec idx)) nil))
+                      :icon (m/Icon m.Icons/arrow_upward_rounded :size 25 :color priority-icon-color)
+                      :iconSize 25)
                     (m/SizedBox :width 8)
                     (m/Icon m.Icons/menu :size 25)]))])))))))
 
@@ -179,6 +176,9 @@
                :inherit [m/Theme]
                (m/Text "Submit" :style (-> theme .-textTheme .headline6 (.copyWith :color m.Colors/white :fontSize 16))))))]))))
 
+(def progress-widget
+  (m/Center :child (m/CircularProgressIndicator :valueColor (m/AlwaysStoppedAnimation (.green m/Colors)))))
+
 (def todos-page
   (f/widget
     :inherit [:app-state m/ScaffoldMessenger]
@@ -227,28 +227,42 @@
                       :padding (m.EdgeInsets/only :bottom 90)
                       :itemCount @(get app-state :todos/count)
                       :itemBuilder (fn [_ idx] (todo-item idx @(get-in app-state [:todos idx :id])))
-                      :onReorder
-                      (fn [old-idx new-idx]
-                        (swap! app-state
-                          (fn [s]
-                            (let [todos (:todos s)]
-                              (if (< new-idx old-idx)
-                                (let [p1 (conj (subvec todos 0 new-idx) (nth todos old-idx))
-                                      p2 (subvec todos new-idx old-idx)
-                                      p3 (subvec todos (inc old-idx))]
-                                  (assoc s :todos (into p1 (concat p2 p3))))
-                                (let [p1 (subvec todos 0 old-idx)
-                                      p2 (conj (subvec todos (inc old-idx) new-idx) (nth todos old-idx))
-                                      p3 (subvec todos new-idx)]
-                                  (assoc s :todos (into p1 (concat p2 p3)))))))))))))))))
+                      :onReorder (on-reorder app-state)))))))))
+
+;; Scaffold app components
+(defn bottom-navigation-bar [index]
+  (f/widget
+    :watch index
+    (m/BottomNavigationBar
+      :currentIndex @index
+      :onTap (fn [i] (reset! index i) nil)
+      :items [(m/BottomNavigationBarItem
+                :icon (m/Icon m.Icons/today_outlined)
+                :label "Todos")
+              (m/BottomNavigationBarItem
+                :icon (m/Icon m.Icons/article)
+                :label "News")])))
+
+(def app-bar
+  (m/AppBar
+    :centerTitle true
+    :title
+    (f/widget
+      :inherit [m/Theme]
+      (m/Text "The Morning App"
+        :style (-> theme .-textTheme .headline6 (.copyWith :color (.white m/Colors) :fontSize 24))))))
 
 (def home-page
   (let [pages [todos-page
+               ;; Still todo
+               (f/nest m/Center (m/Text "NewsPage can be done following the todo page."))
                #_(m/NewsPage :newsRepository (m/NewsRepository :remoteDataSource (m/NewsRemoteDataSource)))]]
-    (m/Scaffold
-      :appBar app-bar
-      :body (nth pages 0)
-      :bottomNavigationBar bottom-navigation-bar)))
+    (f/widget
+      :state [index 0]
+      (m/Scaffold
+        :appBar app-bar
+        :body (nth pages @index)
+        :bottomNavigationBar (bottom-navigation-bar index)))))
 
 (defn main []
   (m.WidgetsFlutterBinding/ensureInitialized)
