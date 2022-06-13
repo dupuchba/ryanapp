@@ -176,7 +176,7 @@
            :todos-page/is-adding-todo false}
     (f/widget
       :inherit [:app-state :todos-page/completer :todos-page/is-loading :todos-page/is-adding-todo m/ScaffoldMessenger]
-      ;; not happy with the way we handle async values with flutter.alpha and FutureBuilder/StreamBuilder sucks
+      ;; not happy with the way we handle async values with flutter.alpha but FutureBuilder/StreamBuilder sucks
       (when-not (.isCompleted ^a/Completer @completer)
         (let [todos (fetch-todos)]
           (-> (.complete ^a/Completer @completer todos))
@@ -246,7 +246,7 @@
 (def home-page
   (let [pages [todos-page
                (f/nest m/Center (m/Text "NewsPage can be done following the todo page."))
-               ;; TODO: homework for the braves
+               ;; TODO: homework for the brave
                #_(m/NewsPage :newsRepository (m/NewsRepository :remoteDataSource (m/NewsRemoteDataSource)))]]
     (f/widget :bind {:home-page/index 0}
       (m/Scaffold
