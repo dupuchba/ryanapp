@@ -46,3 +46,6 @@ app.*.map.json
 /android/app/profile
 /android/app/release
 .clojuredart/
+lib/cljd-out/
+.cpcache
+.cpcache/
