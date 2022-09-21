@@ -169,57 +169,62 @@
 
 (def progress-widget (m/Center .child (m/CircularProgressIndicator .valueColor (m/AlwaysStoppedAnimation (.green m/Colors)))))
 
+(def todo-list
+  (f/widget
+    :get [:app-state]
+    (m.ReorderableListView/builder
+      .padding (m/EdgeInsets.only .bottom 90)
+      .itemCount @(get app-state :todos/count)
+      .itemBuilder
+      (f/build [idx]
+        :get [:app-state]
+        (todo-item idx @(get-in app-state [:todos idx])))
+      .onReorder (on-reorder app-state))))
+
 (def todos-page
   (f/widget
-    :bind {:todos-page/is-adding-todo false}
-    (f/widget
-      :get [:app-state :todos-page/is-adding-todo]
-      (m/WillPopScope .onWillPop ^:async (fn [] (if @is-adding-todo
-                                                  (do (swap! is-adding-todo not) false)
-                                                  true)))
-      (m/Scaffold
-        .floatingActionButton
-        (f/nest
-          (m/FloatingActionButton .onPressed (fn [] (swap! is-adding-todo not)) .backgroundColor accent-color)
-          (f/widget :get [:todos-page/is-adding-todo] (m/Icon (if @is-adding-todo m.Icons/close m.Icons/add) .color m.Colors/white)))
-        .bottomSheet
-        (f/widget
-          :get [:todos-page/is-adding-todo]
-          (if @is-adding-todo
-            (m/BottomSheet
-              .backgroundColor secondary-color
-              .onClosing (fn [])
-              .builder (f/build add-todo-widget))
-            (m/SizedBox.shrink)))
-        .body (f/widget
-                :get [:app-state m/ScaffoldMessenger]
-                :watch [todos (stream
-                                (map (fn [todos]
-                                       (swap! app-state
-                                         (fn [s]
-                                           ;; assoc should be some kind of update that does not erase local-state
-                                           ;; it's fine for the example
-                                           (let [s (assoc s :todos todos)]
-                                             (assoc s :todos/count (count todos)))))
-                                       true))
-                                (map (fn [[er st]]
-                                       (.showSnackBar scaffold-messenger
-                                         (m/SnackBar .content (m/Text "Error while fetching the todos!")))
-                                       false))
-                                :as-values
-                                (.asStream (fetch-todos)))]
-                (if todos
-                  (f/widget
-                    :get [:app-state]
-                    (m.ReorderableListView/builder
-                      .padding (m/EdgeInsets.only .bottom 90)
-                      .itemCount @(get app-state :todos/count)
-                      .itemBuilder
-                      (f/build [idx]
-                        :get [:app-state]
-                        (todo-item idx @(get-in app-state [:todos idx])))
-                      .onReorder (on-reorder app-state)))
-                  progress-widget))))))
+    :get [:todos-page/is-adding-todo]
+    (m/WillPopScope .onWillPop ^:async (fn [] (if @is-adding-todo (do (swap! is-adding-todo not) false) true)))
+    (m/Scaffold
+      .floatingActionButton
+      (f/nest
+        (m/FloatingActionButton .onPressed (fn [] (swap! is-adding-todo not)) .backgroundColor accent-color)
+        (f/widget :get [:todos-page/is-adding-todo] (m/Icon (if @is-adding-todo m.Icons/close m.Icons/add) .color m.Colors/white)))
+      .bottomSheet
+      (f/widget
+        :get [:todos-page/is-adding-todo]
+        (if @is-adding-todo
+          (m/BottomSheet
+            .backgroundColor secondary-color
+            .onClosing (fn [])
+            .builder (f/build add-todo-widget))
+          (m/SizedBox.shrink)))
+      .body (f/widget
+              :get [:app-state m/ScaffoldMessenger]
+              :watch [widget-type
+                      (stream
+                        (map (fn [todos]
+                               (swap! app-state
+                                 (fn [s]
+                                   ;; assoc should be some kind of update that does not erase local-state
+                                   ;; it's fine for the example
+                                   (let [s (assoc s :todos todos)]
+                                     (assoc s :todos/count (count todos)))))
+                               :list-widget))
+                        (map (fn [[er st]]
+                               (.showSnackBar scaffold-messenger
+                                 (m/SnackBar .content (m/Text "Error while fetching the todos!")))
+                               :error-widget))
+                        :as-values
+                        (.asStream (fetch-todos)))
+                      :default :progress-widget]
+              (cond
+                (= :list-widget widget-type)
+                todo-list
+                (= :progress-widget widget-type)
+                progress-widget
+                (= :error-widget widget-type)
+                (m/Text "ERROR but I don't know how to how to design stuff..."))))))
 
 ;; Scaffold app components
 (def bottom-navigation-bar
@@ -249,12 +254,10 @@
                (f/nest m/Center (m/Text "NewsPage can be done following the todo page."))
                ;; TODO: homework for the brave
                #_(m/NewsPage :newsRepository (m/NewsRepository :remoteDataSource (m/NewsRemoteDataSource)))]]
-    (f/widget
-      :bind {:home-page/index 0}
-      (m/Scaffold
-        .appBar app-bar
-        .body (f/widget :get [:home-page/index] (nth pages @index))
-        .bottomNavigationBar bottom-navigation-bar))))
+    (m/Scaffold
+      .appBar app-bar
+      .body (f/widget :get [:home-page/index] (nth pages @index))
+      .bottomNavigationBar bottom-navigation-bar)))
 
 (defn main []
   (m.WidgetsFlutterBinding/ensureInitialized)
@@ -264,7 +267,9 @@
       ;; when using dragable widgets, :bind must be at the root of the widget tree
       ;; todos are empty when the application is created
       :bind {:app-state {:todos       []
-                         :todos/count 0}}
+                         :todos/count 0}
+             :todos-page/is-adding-todo false
+             :home-page/index 0}
       (m/MaterialApp
         .title "The Morning App"
         .theme (m/ThemeData
