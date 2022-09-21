@@ -5,7 +5,7 @@
             ["package:flutter/material.dart" :as m]
             ["package:google_fonts/google_fonts.dart" :as gf]
             ["package:intl/intl.dart" :as intl]
-            [cljd.flutter.alpha :as f]))
+            [cljd.flutter.alpha2 :as f]))
 ;; dates utils
 (defn ^String formatted-date [^DateTime date-time]
   (-> (intl/DateFormat "MMM d yyyy") (.format date-time)))
@@ -59,172 +59,172 @@
   ;; todo-id does not change and a key is needed as it is a re-orderable list
   (f/widget
     :key todo-id
-    :inherit [m/Theme :app-state]
-    (let [text-theme (-> theme .-textTheme)
-          color-scheme (-> theme .-colorScheme)
-          item-color (-> color-scheme .-primary (.withOpacity (* 0.05 priority)))
-          priority-icon-color (-> color-scheme .-secondaryVariant (.withOpacity (* 0.2 priority)))]
-      (m/Column
-        .children
-        [(m/ListTile
-           .shape (m/RoundedRectangleBorder .borderRadius (m.BorderRadius/circular 6))
-           .tileColor item-color
-           .contentPadding (m.EdgeInsets/symmetric .vertical 15 .horizontal 30)
-           .title
-           (m/Text text
-             .style (-> text-theme .-subtitle1
-                      (.copyWith .decoration (when is-done m.TextDecoration/lineThrough))))
-           .subtitle
-           (m/Text (formatted-date due-date)
-             .style (-> text-theme .-bodyText2
-                      (.copyWith .color accent-color .height 2
-                        .decoration (when is-done
-                                      m.TextDecoration/lineThrough))))
-           .trailing
-           (m/Row .mainAxisSize m.MainAxisSize/min
-             .crossAxisAlignment m.CrossAxisAlignment/stretch
-             .children
-             [(f/widget
-                :inherit [:app-state]
-                (m/IconButton
-                  .onPressed (fn [] (swap! app-state (fn [s] (assoc-in s [:todos idx :is-done] (not is-done)))) nil)
-                  .icon (m/Icon (if is-done m.Icons/close_sharp m.Icons/check_sharp))
-                  .iconSize 25))
+    :get [m/Theme]
+    :let [{text-theme .-textTheme {primary .-primary secondary .-secondaryVariant} .-colorScheme} theme
+          item-color (.withOpacity primary (* 0.05 priority))
+          priority-icon-color (.withOpacity secondary (* 0.2 priority))]
+    (m/Column
+      .children
+      [(m/ListTile
+         .shape (m/RoundedRectangleBorder .borderRadius (m.BorderRadius/circular 6))
+         .tileColor item-color
+         .contentPadding (m.EdgeInsets/symmetric .vertical 15 .horizontal 30)
+         .title
+         (m/Text text
+           .style (-> text-theme .-subtitle1
+                    (.copyWith .decoration (when is-done m.TextDecoration/lineThrough))))
+         .subtitle
+         (m/Text (formatted-date due-date)
+           .style (-> text-theme .-bodyText2
+                    (.copyWith .color accent-color .height 2
+                      .decoration (when is-done
+                                    m.TextDecoration/lineThrough))))
+         .trailing
+         (m/Row .mainAxisSize m.MainAxisSize/min
+           .crossAxisAlignment m.CrossAxisAlignment/stretch
+           .children
+           [(f/widget
+              :get [:app-state]
+              (m/IconButton
+                .onPressed (fn [] (swap! app-state (fn [s] (assoc-in s [:todos idx :is-done] (not is-done)))) nil)
+                .icon (m/Icon (if is-done m.Icons/close_sharp m.Icons/check_sharp))
+                .iconSize 25))
+            (f/widget
+              :get [:app-state]
               (m/IconButton
                 .onPressed (when-not (zero? idx)
                              (fn [] ((on-reorder app-state) idx (dec idx)) nil))
                 .icon (m/Icon m.Icons/arrow_upward_rounded .size 25 .color priority-icon-color)
-                .iconSize 25)
-              (m/SizedBox .width 8)
-              (if-not io.Platform/isMacOS (m/Icon m.Icons/menu .size 25) m.SizedBox/shrink)]))]))))
+                .iconSize 25))
+            (m/SizedBox .width 8)
+            (if-not io.Platform/isMacOS (m/Icon m.Icons/menu .size 25) m.SizedBox/shrink)]))])))
 
 (def add-todo-widget
-  (let [new-todo (volatile! {})
-        key (new #/(m/GlobalKey m/FormState))]
-    (f/nest
-      (m/Form .key key)
-      (m/Padding .padding (m.EdgeInsets/all 15))
-      (m/Column
-        .mainAxisSize m.MainAxisSize/min
-        .crossAxisAlignment m.CrossAxisAlignment/stretch
-        .children
-        [(f/widget
-           :context ctx
-           :inherit [m/FocusScope]
-           :with [:let [initial-date (doto (DateTime/now)
-                                       (->> (vswap! new-todo assoc :due-date)))]
-                  controller (m/TextEditingController .text (formatted-date initial-date))]
-           (m/TextFormField
-             .controller controller
-             .decoration (m/InputDecoration .labelText "Due Date")
-             .onTap (fn []
-                      (.unfocus focus-scope)
-                      (let [date (await (m/showDatePicker
-                                          .context ctx
-                                          .initialDate (DateTime/now)
-                                          .firstDate (DateTime/now)
-                                          .lastDate  (.add (DateTime/now) (Duration .days 36500))))]
-                        (when (and date (not= date initial-date))
-                          (set! (.-text controller) (formatted-date date))
-                          (vswap! new-todo assoc :due-date date)))
-                      nil)))
+  (f/widget
+    :let [new-todo (volatile! {})
+          key (new #/(m/GlobalKey m/FormState))]
+    (m/Form .key key)
+    (m/Padding .padding (m.EdgeInsets/all 15))
+    (m/Column
+      .mainAxisSize m.MainAxisSize/min
+      .crossAxisAlignment m.CrossAxisAlignment/stretch
+      .children
+      [(f/widget
+         :context ctx
+         :get [m/FocusScope]
+         :let [initial-date (doto (DateTime/now)
+                              (->> (vswap! new-todo assoc :due-date)))]
+         :managed [controller (m/TextEditingController .text (formatted-date initial-date))]
          (m/TextFormField
-           .decoration (m/InputDecoration .labelText "Todo")
-           .validator (fn [^String value]
-                        (when (or (nil? value) (.-isEmpty value))
-                          "Please enter some text"))
-           .onSaved (fn [value] (vswap! new-todo assoc :text value)))
-         (m/TextFormField
-           .keyboardType m.TextInputType/number
-           .decoration (m/InputDecoration .labelText "Priority (0-5)")
-           .validator (fn [value]
-                        (cond
-                          (or (nil? value) (nil? (int/tryParse value)))
-                          "Please enter a number"
-                          (not (<= 0 (int/parse value) 5))
-                          "Please enter a number between 0 and 5"))
-           .onSaved (fn [value] (vswap! new-todo assoc :priority (int/parse value))))
-         (m/SizedBox .height 25)
+           .controller controller
+           .decoration (m/InputDecoration .labelText "Due Date")
+           .onTap (fn []
+                    (.unfocus focus-scope)
+                    (let [date (await (m/showDatePicker
+                                        .context ctx
+                                        .initialDate (DateTime/now)
+                                        .firstDate (DateTime/now)
+                                        .lastDate  (.add (DateTime/now) (Duration .days 36500))))]
+                      (when (and date (not= date initial-date))
+                        (set! (.-text controller) (formatted-date date))
+                        (vswap! new-todo assoc :due-date date)))
+                    nil)))
+       (m/TextFormField
+         .decoration (m/InputDecoration .labelText "Todo")
+         .validator (fn [^String value]
+                      (when (or (nil? value) (.-isEmpty value))
+                        "Please enter some text"))
+         .onSaved (fn [value] (vswap! new-todo assoc :text value)))
+       (m/TextFormField
+         .keyboardType m.TextInputType/number
+         .decoration (m/InputDecoration .labelText "Priority (0-5)")
+         .validator (fn [value]
+                      (cond
+                        (or (nil? value) (nil? (int/tryParse value)))
+                        "Please enter a number"
+                        (not (<= 0 (int/parse value) 5))
+                        "Please enter a number between 0 and 5"))
+         .onSaved (fn [value] (vswap! new-todo assoc :priority (int/parse value))))
+       (m/SizedBox .height 25)
+       (f/widget
+         :get [:todos-page/is-adding-todo :app-state]
+         (m/ElevatedButton
+           .style (m/ButtonStyle .backgroundColor (. m/MaterialStateProperty #/(all m/Color) primary-color))
+           .onPressed (fn []
+                        (when (-> key .-currentState .validate)
+                          (-> key .-currentState .save)
+                          (-> key .-currentState .reset)
+                          (swap! app-state
+                            (fn [s]
+                              (-> s
+                                (update :todos conj (assoc @new-todo :id (:todos/count s)))
+                                (update :todos/count inc))))
+                          (vreset! new-todo {})
+                          (swap! is-adding-todo not))
+                        nil))
+         (m/Padding .padding (m.EdgeInsets/all 10))
          (f/widget
-           :inherit [:todos-page/is-adding-todo :app-state]
-           (f/nest
-             (m/ElevatedButton
-               .style (m/ButtonStyle .backgroundColor (. m/MaterialStateProperty #/(all m/Color) primary-color))
-               .onPressed (fn []
-                            (when (-> key .-currentState .validate)
-                              (-> key .-currentState .save)
-                              (-> key .-currentState .reset)
-                              (swap! app-state
-                                (fn [s]
-                                  (-> s
-                                    (update :todos conj (assoc @new-todo :id (:todos/count s)))
-                                    (update :todos/count inc))))
-                              (vreset! new-todo {})
-                              (swap! is-adding-todo not))
-                            nil))
-             (m/Padding .padding (m.EdgeInsets/all 10))
-             (f/widget
-               :inherit [m/Theme]
-               (m/Text "Submit" .style (-> theme .-textTheme .-headline6 (.copyWith .color m.Colors/white .fontSize 16))))))]))))
+           :get [m/Theme]
+           (m/Text "Submit" .style (-> theme .-textTheme .-headline6 (.copyWith .color m.Colors/white .fontSize 16)))))])))
 
 (def progress-widget (m/Center .child (m/CircularProgressIndicator .valueColor (m/AlwaysStoppedAnimation (.green m/Colors)))))
 
 (def todos-page
   (f/widget
-    ;; I don't use :state as I don't want to rebuild all todos-page when loading | adding-todo is happening.
-    ;; could have used an atom in a let binding with a (f/widget :watch at..) where refresh is necessary
-    :bind {:todos-page/is-loading true
-           :todos-page/is-adding-todo false}
+    :bind {:todos-page/is-adding-todo false}
     (f/widget
-      :inherit [:app-state :todos-page/completer :todos-page/is-loading :todos-page/is-adding-todo m/ScaffoldMessenger]
-      ;; not happy with the way we handle async values with flutter.alpha but FutureBuilder/StreamBuilder sucks
-      (when-not (.-isCompleted ^a/Completer @completer)
-        (let [todos (fetch-todos)]
-          (-> (.complete ^a/Completer @completer todos))
-          (.then todos
-            (fn [t]
-              (swap! app-state
-                (fn [s]
-                  (let [s (update s :todos into t)]
-                    (assoc s :todos/count (count (:todos s))))))
-              (reset! is-loading false))
-            .onError (fn [_]
-                       (.showSnackBar scaffold-messenger
-                         (m/SnackBar .content (m/Text "Error while fetching the todos!")))))))
-      (f/nest
-        (m/WillPopScope .onWillPop ^:async (fn [] (if @is-adding-todo
-                                                    (do (swap! is-adding-todo not) false)
-                                                    true)))
-        (m/Scaffold
-          .floatingActionButton
-          (f/nest
-            (m/FloatingActionButton .onPressed (fn [] (swap! is-adding-todo not)) .backgroundColor accent-color)
-            (f/widget :inherit [:todos-page/is-adding-todo] (m/Icon (if @is-adding-todo m.Icons/close m.Icons/add) .color m.Colors/white)))
-          .bottomSheet
-          (f/widget
-            :inherit [:todos-page/is-adding-todo]
-            (if @is-adding-todo
-              (m/BottomSheet
-                .backgroundColor secondary-color
-                .onClosing (fn [])
-                .builder (fn [_] add-todo-widget))
-              (m/SizedBox.shrink)))
-          .body (f/widget
-                  :inherit [:todos-page/is-loading]
-                  (if @is-loading
-                    progress-widget
-                    (f/widget
-                      :inherit [:app-state]
-                      (m.ReorderableListView/builder
-                        .padding (m.EdgeInsets/only .bottom 90)
-                        .itemCount @(get app-state :todos/count)
-                        .itemBuilder (fn [_ idx] (todo-item idx @(get-in app-state [:todos idx])))
-                        .onReorder (on-reorder app-state))))))))))
+      :get [:app-state :todos-page/is-adding-todo]
+      (m/WillPopScope .onWillPop ^:async (fn [] (if @is-adding-todo
+                                                  (do (swap! is-adding-todo not) false)
+                                                  true)))
+      (m/Scaffold
+        .floatingActionButton
+        (f/nest
+          (m/FloatingActionButton .onPressed (fn [] (swap! is-adding-todo not)) .backgroundColor accent-color)
+          (f/widget :get [:todos-page/is-adding-todo] (m/Icon (if @is-adding-todo m.Icons/close m.Icons/add) .color m.Colors/white)))
+        .bottomSheet
+        (f/widget
+          :get [:todos-page/is-adding-todo]
+          (if @is-adding-todo
+            (m/BottomSheet
+              .backgroundColor secondary-color
+              .onClosing (fn [])
+              .builder (f/build add-todo-widget))
+            (m/SizedBox.shrink)))
+        .body (f/widget
+                :get [:app-state m/ScaffoldMessenger]
+                :watch [todos (stream
+                                (map (fn [todos]
+                                       (swap! app-state
+                                         (fn [s]
+                                           ;; assoc should be some kind of update that does not erase local-state
+                                           ;; it's fine for the example
+                                           (let [s (assoc s :todos todos)]
+                                             (assoc s :todos/count (count todos)))))
+                                       true))
+                                (map (fn [[er st]]
+                                       (.showSnackBar scaffold-messenger
+                                         (m/SnackBar .content (m/Text "Error while fetching the todos!")))
+                                       false))
+                                :as-values
+                                (.asStream (fetch-todos)))]
+                (if todos
+                  (f/widget
+                    :get [:app-state]
+                    (m.ReorderableListView/builder
+                      .padding (m/EdgeInsets.only .bottom 90)
+                      .itemCount @(get app-state :todos/count)
+                      .itemBuilder
+                      (f/build [idx]
+                        :get [:app-state]
+                        (todo-item idx @(get-in app-state [:todos idx])))
+                      .onReorder (on-reorder app-state)))
+                  progress-widget))))))
 
 ;; Scaffold app components
 (def bottom-navigation-bar
   (f/widget
-    :inherit [:home-page/index]
+    :get [:home-page/index]
     (m/BottomNavigationBar
       .currentIndex @index
       .onTap (fn [i] (reset! index i) nil)
@@ -240,7 +240,7 @@
     .centerTitle true
     .title
     (f/widget
-      :inherit [m/Theme]
+      :get [m/Theme]
       (m/Text "The Morning App"
         .style (-> theme .-textTheme .-headline6 (.copyWith .color m.Colors/white .fontSize 24))))))
 
@@ -249,34 +249,34 @@
                (f/nest m/Center (m/Text "NewsPage can be done following the todo page."))
                ;; TODO: homework for the brave
                #_(m/NewsPage :newsRepository (m/NewsRepository :remoteDataSource (m/NewsRemoteDataSource)))]]
-    (f/widget :bind {:home-page/index 0}
+    (f/widget
+      :bind {:home-page/index 0}
       (m/Scaffold
         .appBar app-bar
-        .body (f/widget :inherit [:home-page/index] (nth pages @index))
+        .body (f/widget :get [:home-page/index] (nth pages @index))
         .bottomNavigationBar bottom-navigation-bar))))
 
 (defn main []
   (m.WidgetsFlutterBinding/ensureInitialized)
   (m/runApp
-    (let [w700BitterFont (.bitter gf/GoogleFonts .fontWeight (.w700 m/FontWeight))]
-      (f/widget
-        ;; when using dragable widgets, :bind must be at the root of the widget tree
-        ;; todos are empty when the application is created
-        :bind {:app-state {:todos       []
-                           :todos/count 0}
-               :todos-page/completer (a/Completer)}
-        (m/MaterialApp
-          .title "The Morning App"
-          .theme (m/ThemeData
-                   .colorScheme (m.ColorScheme/fromSwatch .primarySwatch m.Colors/green)
-                   .primaryColor primary-color
-                   .primaryColorDark primary-dark-color
-                   .accentColor secondary-color
-                   .appBarTheme (m/AppBarTheme .brightness m.Brightness/dark)
-                   .primaryTextTheme (m/TextTheme .headline6 w700BitterFont)
-                   .textTheme (m/TextTheme
-                                .subtitle1 (.apply w700BitterFont .color black)
-                                .headline6 (.apply w700BitterFont .color black)
-                                .bodyText2 (.apply w700BitterFont .color black)))
-          .home home-page
-          .debugShowCheckedModeBanner false)))))
+    (f/widget
+      :let [w700BitterFont (.bitter gf/GoogleFonts .fontWeight (.w700 m/FontWeight))]
+      ;; when using dragable widgets, :bind must be at the root of the widget tree
+      ;; todos are empty when the application is created
+      :bind {:app-state {:todos       []
+                         :todos/count 0}}
+      (m/MaterialApp
+        .title "The Morning App"
+        .theme (m/ThemeData
+                 .colorScheme (m/ColorScheme.fromSwatch .primarySwatch m/Colors.green)
+                 .primaryColor primary-color
+                 .primaryColorDark primary-dark-color
+                 .accentColor secondary-color
+                 .appBarTheme (m/AppBarTheme .brightness m/Brightness.dark)
+                 .primaryTextTheme (m/TextTheme .headline6 w700BitterFont)
+                 .textTheme (m/TextTheme
+                              .subtitle1 (.apply w700BitterFont .color black)
+                              .headline6 (.apply w700BitterFont .color black)
+                              .bodyText2 (.apply w700BitterFont .color black)))
+        .home home-page
+        .debugShowCheckedModeBanner false))))
